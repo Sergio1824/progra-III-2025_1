@@ -44,7 +44,7 @@
         android:layout_marginBottom="16dp"
         android:background="@color/background_orange"
         android:text="Ver Categorias"
-        android:textColor="@android:color/white"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
     <Button
@@ -55,7 +55,7 @@
         android:layout_marginBottom="16dp"
         android:background="@color/background_red"
         android:text="Favoritos ❤"
-        android:textColor="@android:color/white"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
     <Button
@@ -65,7 +65,7 @@
         android:layout_marginHorizontal="20dp"
         android:background="@color/background_orange"
         android:text="Agregar Receta"
-        android:textColor="@android:color/white"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
 </LinearLayout>
