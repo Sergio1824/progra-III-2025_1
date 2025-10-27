@@ -9,7 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.cookeasy.databinding.ActivityPantallaLogInBinding
 
-class PantallaLogIn : AppCompatActivity() {
+class PantallaCrearUsuario : AppCompatActivity() {
     val context: Context = this
     private lateinit var binding: ActivityPantallaLogInBinding
 

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PantallaLogIn">
+    tools:context=".PantallaCrearUsuario">
 
     <TextView
         android:id="@+id/TituloLogin"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/purple"
         android:gravity="center"
-        android:text="LOGIN"
+        android:text="CREAR USUARIO"
         android:textSize="28sp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
@@ -47,7 +47,7 @@
         android:id="@+id/ButtonLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="INGRESAR"
+        android:text="Crear Usuario"
         android:textSize="20sp"
         android:layout_marginTop="50dp"
         app:layout_constraintTop_toBottomOf="@id/Contrasena"
