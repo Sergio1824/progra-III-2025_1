@@ -18,16 +18,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // ✅ Inicializar Firebase Auth
+        // Inicializar Firebase Auth
         auth = Firebase.auth
 
-        // ✅ Obtener referencias a los views
+        // Obtener referencias a los views
         val botonLogin = findViewById<Button>(R.id.login)
         val botonCrear = findViewById<Button>(R.id.crearcuenta)
         val editCorreo = findViewById<EditText>(R.id.edit_correo)
         val editPass = findViewById<EditText>(R.id.edit_pass)
 
-        // ✅ Listener para Login
+        // Listener para Login
         botonLogin.setOnClickListener {
             val correo = editCorreo.text.toString().trim()
             val pass = editPass.text.toString().trim()
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // ✅ Listener para Crear Cuenta
+        // Listener para Crear Cuenta
         botonCrear.setOnClickListener {
             val correo = editCorreo.text.toString().trim()
             val pass = editPass.text.toString().trim()
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        // ✅ Verificar si hay usuario logueado
+        // Verificar si hay usuario logueado
         val currentUser = auth.currentUser
         if (currentUser != null) {
             val intentPantallaInicio = Intent(this, PantallaInicio::class.java)
@@ -63,33 +63,33 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // ✅ Función para crear usuario
+    // Función para crear usuario
     private fun crearUsuario(correo: String, pass: String) {
         auth.createUserWithEmailAndPassword(correo, pass)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // ✅ Usuario creado exitosamente → ir a PantallaInicio
-                    val intentPantallaInicio = Intent(this, PantallaInicio::class.java)
+                    // Usuario creado exitosamente → ir a PantallaInicio
+                    val intentPantallaInicio = Intent(this, PantallaCrearUsuario::class.java)
                     startActivity(intentPantallaInicio)
                     finish()
                 } else {
-                    // ❌ Error al crear usuario
+                    // Error al crear usuario
                     Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
                 }
             }
     }
 
-    // ✅ Función para validar login
+    // Función para validar login
     private fun loginValidation(correo: String, pass: String) {
         auth.signInWithEmailAndPassword(correo, pass)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // ✅ Login exitoso → ir a PantallaInicio
+                    // Login exitoso → ir a PantallaInicio
                     val intentPantallaInicio = Intent(this, PantallaInicio::class.java)
                     startActivity(intentPantallaInicio)
                     finish()
                 } else {
-                    // ❌ Error en login
+                    // Error en login
                     Toast.makeText(baseContext, "No pudimos loguear ese usuario y contraseña", Toast.LENGTH_LONG).show()
                 }
             }
