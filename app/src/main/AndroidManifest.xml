@@ -14,7 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CookEasy">
         <activity
+            android:name=".PantallaInicio"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PantallaLogIn"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
