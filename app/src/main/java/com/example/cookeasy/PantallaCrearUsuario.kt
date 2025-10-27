@@ -7,18 +7,18 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.cookeasy.databinding.ActivityPantallaLogInBinding
+import com.example.cookeasy.databinding.ActivityCrearUsuarioBinding
 
 class PantallaCrearUsuario : AppCompatActivity() {
     val context: Context = this
-    private lateinit var binding: ActivityPantallaLogInBinding
+    private lateinit var binding: ActivityCrearUsuarioBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        binding = ActivityPantallaLogInBinding.inflate(layoutInflater)
+        binding = ActivityCrearUsuarioBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
