@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // ✅ Usuario creado exitosamente
-                    val intentLogin = Intent(this, LoginActivity::class.java) // ⚠️ ¿Es esta la activity correcta?
+                    val intentLogin = Intent(this, PantallaLogIn::class.java) // ⚠️ ¿Es esta la activity correcta?
                     startActivity(intentLogin)
                 } else {
                     // ❌ Error al crear usuario
