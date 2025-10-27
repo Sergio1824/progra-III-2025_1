@@ -57,8 +57,8 @@ class MainActivity : AppCompatActivity() {
         // ✅ Verificar si hay usuario logueado
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            val intentPantallaPrincipal = Intent(this, PantallaPrincipalActivity::class.java)
-            startActivity(intentPantallaPrincipal)
+            val intentPantallaInicio = Intent(this, PantallaInicio::class.java)
+            startActivity(intentPantallaInicio)
             finish() // Cierra MainActivity para que no se pueda volver atrás
         }
     }
@@ -68,9 +68,10 @@ class MainActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(correo, pass)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // ✅ Usuario creado exitosamente
-                    val intentLogin = Intent(this, PantallaLogIn::class.java) // ⚠️ ¿Es esta la activity correcta?
-                    startActivity(intentLogin)
+                    // ✅ Usuario creado exitosamente → ir a PantallaInicio
+                    val intentPantallaInicio = Intent(this, PantallaInicio::class.java)
+                    startActivity(intentPantallaInicio)
+                    finish()
                 } else {
                     // ❌ Error al crear usuario
                     Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
@@ -83,9 +84,9 @@ class MainActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(correo, pass)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // ✅ Login exitoso
-                    val intentPantallaPrincipal = Intent(this, PantallaPrincipalActivity::class.java)
-                    startActivity(intentPantallaPrincipal)
+                    // ✅ Login exitoso → ir a PantallaInicio
+                    val intentPantallaInicio = Intent(this, PantallaInicio::class.java)
+                    startActivity(intentPantallaInicio)
                     finish()
                 } else {
                     // ❌ Error en login
