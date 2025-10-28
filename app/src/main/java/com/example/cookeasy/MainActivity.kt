@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(correo, pass)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // ✅ Login exitoso → ir a PantallaInicio
+                    // Login exitoso → ir a PantallaInicio
                     val intentPantallaInicio = Intent(this, PantallaInicio::class.java)
                     startActivity(intentPantallaInicio)
                     finish()
