@@ -38,7 +38,8 @@ class AdapterPantallaCategoria :
         fun binding(data: Categoria) {
       //      binding.textAdapterEjemplo.text = data
 
-
+            binding.nombreCategoria.text = data.nombre
+            binding.contadorRecetas.text = "(${data.cantidadRecetas} RECETAS)"
 
         }
     }

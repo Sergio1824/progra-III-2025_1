@@ -38,9 +38,6 @@ class PantallaCategorias : AppCompatActivity() {
         }
 
 
-
-
-
         val listaDeCategorias = listOf(
             Categoria(
                 numCategoria = 1,
