@@ -39,7 +39,8 @@ class AdapterPantallaReceta :
 
             binding.nombreReceta.text = data.titulo
             binding.infoReceta.text = "(${data.dificultad} - ${data.tiempoPreparacion} RECETAS)"
-            binding.imagenReceta.imageAlpha
+            binding.infoReceta.setOnClickListener {
+            }
 
         }
     }

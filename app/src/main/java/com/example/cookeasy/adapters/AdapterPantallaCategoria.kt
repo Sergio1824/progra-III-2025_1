@@ -40,7 +40,6 @@ class AdapterPantallaCategoria :
 
             binding.nombreCategoria.text = data.nombre
             binding.contadorRecetas.text = "(${data.cantidadRecetas} RECETAS)"
-            binding.imagenCategoria.imageAlpha
 
         }
     }
