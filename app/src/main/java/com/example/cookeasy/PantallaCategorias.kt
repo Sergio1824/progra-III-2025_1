@@ -1,6 +1,7 @@
 package com.example.cookeasy
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -74,11 +75,18 @@ class PantallaCategorias : AppCompatActivity() {
         adapter.addDataCards(listaDeCategorias)
 
 
-        binding.recyclerEjemploScroll.layoutManager = LinearLayoutManager(this)
-        binding.recyclerEjemploScroll.adapter = adapter
+        binding.tarjetaCategorias.layoutManager = LinearLayoutManager(this)
+        binding.tarjetaCategorias.adapter = adapter
 
+
+
+        binding.titleCategory.setOnClickListener {
+            val intentCambiarAMainActivity= Intent(context, PantallaRecetas::class.java)
+            startActivity(intentCambiarAMainActivity)
+        }
 
     }
+
 
 
 }

@@ -9,9 +9,14 @@
     <color name="light_green">#00FF00</color>
     <color name="purple">#CD00FF</color>
     <color name="brown">#580808</color>
+    <color name="light_brown">#563131</color>
     <color name="cream">#FDEBC8</color>
     <color name="background_orange">#F57C00</color>
     <color name="background_red">#D32F2F</color>
+    <color name="dark_gray">#484848</color>
+    <color name="light_gray">#BBBBBB</color>
+
+
 
 
 
