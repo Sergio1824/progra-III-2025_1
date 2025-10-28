@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             val pass = editPass.text.toString().trim()
 
             if (correo.isNotEmpty() && pass.isNotEmpty()) {
-                loginUsuario(correo,pass)
+                loginUsuario(correo, pass)
             } else {
                 Toast.makeText(this, "Debe ingresar Correo y contraseña", Toast.LENGTH_SHORT).show()
             }
@@ -47,7 +47,11 @@ class MainActivity : AppCompatActivity() {
             if (correo.isEmpty()) {
                 Toast.makeText(this, "Ingrese un correo", Toast.LENGTH_SHORT).show()
             } else if (pass.length < 8) {
-                Toast.makeText(this, "La contraseña debe tener al menos 8 caracteres", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "La contraseña debe tener al menos 8 caracteres",
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
                 crearUsuario(correo, pass)
             }
