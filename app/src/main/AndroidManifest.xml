@@ -15,9 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CookEasy">
         <activity
-            android:name=".PantallaCategoria"
-            android:exported="false" />
-        <activity
             android:name=".PantallaInicio"
             android:exported="false" />
         <activity
@@ -25,6 +22,9 @@
             android:exported="false" />
         <activity
             android:name=".PantallaCrearUsuario"
+            android:exported="false" />
+        <activity
+            android:name=".PantallaCategorias"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
