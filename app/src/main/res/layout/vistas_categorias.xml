@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="150dp"
     android:orientation="horizontal"
     android:weightSum="10"
     android:layout_marginHorizontal="16dp"
@@ -16,8 +16,8 @@
 
     <ImageView
         android:id="@+id/imagen_categoria"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:layout_weight="1"
         tools:src="@drawable/olla"/>
 
@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/brown"
-            android:textSize="20sp"
+            android:textSize="37sp"
             android:textStyle="bold"
             tools:text="Aperitivos" />
 
@@ -43,14 +43,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/purple"
-            android:textSize="14sp"
+            android:textSize="17sp"
             tools:text="(15 RECETAS)" />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/flecha_derecha"
         android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_height="88dp"
         android:src="@drawable/flecha_derecha" />
 
 </LinearLayout>
