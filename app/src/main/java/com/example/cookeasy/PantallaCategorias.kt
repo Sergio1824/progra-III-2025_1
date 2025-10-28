@@ -10,7 +10,6 @@
     import androidx.recyclerview.widget.LinearLayoutManager
     import com.example.cookeasy.adapters.AdapterPantallaCategoria
     import com.example.cookeasy.dataClasses.Categoria
-    import com.example.cookeasy.databinding.ActivityCrearUsuarioBinding
     import com.example.cookeasy.databinding.ActivityPantallaCategoriasBinding
 
     class PantallaCategorias : AppCompatActivity() {
