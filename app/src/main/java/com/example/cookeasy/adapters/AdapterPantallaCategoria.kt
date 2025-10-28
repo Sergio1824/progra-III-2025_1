@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.R
 import com.example.cookeasy.dataClasses.Categoria
 import com.example.cookeasy.databinding.VistasCategoriasBinding
 
@@ -40,6 +42,12 @@ class AdapterPantallaCategoria :
 
             binding.nombreCategoria.text = data.nombre
             binding.contadorRecetas.text = "(${data.cantidadRecetas} RECETAS)"
+
+            context?.let {
+                Glide.with(it) // Carga en el contexto
+                    .load(data.imagenCategoria) //esta es la url de la clas
+                    .into(binding.imagenCategoria) // es la id del image view
+            }
 
         }
     }
