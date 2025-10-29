@@ -79,10 +79,6 @@
 
 
 
-            binding.titleCategory.setOnClickListener {
-                val intentCambiarAMainActivity= Intent(context, PantallaRecetas::class.java)
-                startActivity(intentCambiarAMainActivity)
-            }
 
         }
 
