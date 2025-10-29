@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             val pass = editPass.text.toString().trim()
 
             if (correo.isNotEmpty() && pass.isNotEmpty()) {
-                loginUsuario(correo,pass)
+                loginUsuario(correo, pass)
             } else {
                 Toast.makeText(this, "Debe ingresar Correo y contraseña", Toast.LENGTH_SHORT).show()
             }
@@ -49,7 +49,11 @@ class MainActivity : AppCompatActivity() {
             if (correo.isEmpty()) {
                 Toast.makeText(this, "Ingrese un correo", Toast.LENGTH_SHORT).show()
             } else if (pass.length < 8) {
-                Toast.makeText(this, "La contraseña debe tener al menos 8 caracteres", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "La contraseña debe tener al menos 8 caracteres",
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
                 crearUsuario(correo, pass)
             }
@@ -63,11 +67,11 @@ class MainActivity : AppCompatActivity() {
         if (currentUser != null) {
             val intentPantallaInicio = Intent(this, PantallaInicio::class.java)
             startActivity(intentPantallaInicio)
-            finish() // Cierra MainActivity para que no se pueda volver atrás
+            finish() // Cierra MainActivity para que no se pueda volver a la pantalla de login
         }
     }
 
-    // Función para crear usuario
+    // Funcion para crear usuario
     private fun crearUsuario(correo: String, pass: String) {
         auth.createUserWithEmailAndPassword(correo, pass)
             .addOnCompleteListener(this) { task ->
@@ -95,7 +99,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    // Función para validar login
+    // Funcion para validar login
     private fun irPantallaInicio() {
         val intent = Intent(this, PantallaInicio::class.java)
         startActivity(intent)

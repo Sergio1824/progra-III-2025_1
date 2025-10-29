@@ -1,9 +1,12 @@
 package com.example.cookeasy.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.cookeasy.PantallaRecetas
 import com.example.cookeasy.dataClasses.Categoria
 import com.example.cookeasy.databinding.VistasCategoriasBinding
 
@@ -13,6 +16,11 @@ class AdapterPantallaCategoria :
 
     private val dataCards = mutableListOf<Categoria>()
     private var context: Context? = null
+
+    private var onItemClick: ((Categoria) -> Unit)? = null
+
+    // méto_do público para configurar el clic desde fuera
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EjemploCardViewHolder {
@@ -40,6 +48,20 @@ class AdapterPantallaCategoria :
 
             binding.nombreCategoria.text = data.nombre
             binding.contadorRecetas.text = "(${data.cantidadRecetas} RECETAS)"
+
+            context?.let {
+                Glide.with(it) // Carga en el contexto
+                    .load(data.imagenCategoria) //esta es la url de la clas
+                    .into(binding.imagenCategoria) // es la id del image view
+            }
+
+
+            binding.root.setOnClickListener {
+                val intent = Intent(context, PantallaRecetas::class.java)
+                intent.putExtra("categoriaSeleccionada", data.nombre)
+                context?.startActivity(intent)
+            }
+
 
         }
     }
