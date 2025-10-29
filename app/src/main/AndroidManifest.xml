@@ -15,19 +15,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CookEasy">
         <activity
+            android:name=".Glide"
+            android:exported="false" />
+        <activity
             android:name=".PantallaRecetas"
             android:exported="false" />
         <activity
             android:name=".PantallaInicio"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".PantallaCategorias"
             android:exported="false" />
         <activity
             android:name=".PantallaCrearUsuario"
             android:exported="false" />
         <activity
-            android:name=".PantallaCategorias"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,7 +38,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
