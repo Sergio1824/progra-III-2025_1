@@ -23,9 +23,7 @@
         <activity
             android:name=".PantallaCategorias"
             android:exported="false" />
-        <activity
-            android:name=".PantallaCrearUsuario"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
