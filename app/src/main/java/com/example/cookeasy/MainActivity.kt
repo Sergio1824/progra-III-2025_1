@@ -18,80 +18,89 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // ✅ Inicializar Firebase Auth
+        // Inicializar Firebase Auth
         auth = Firebase.auth
 
-        // ✅ Obtener referencias a los views
+        // Obtener referencias a los views
         val botonLogin = findViewById<Button>(R.id.login)
         val botonCrear = findViewById<Button>(R.id.crearcuenta)
         val editCorreo = findViewById<EditText>(R.id.edit_correo)
         val editPass = findViewById<EditText>(R.id.edit_pass)
 
-        // ✅ Listener para Login
+        // Listener para Login
         botonLogin.setOnClickListener {
             val correo = editCorreo.text.toString().trim()
             val pass = editPass.text.toString().trim()
 
             if (correo.isNotEmpty() && pass.isNotEmpty()) {
-                loginValidation(correo, pass)
+                loginUsuario(correo, pass)
             } else {
                 Toast.makeText(this, "Debe ingresar Correo y contraseña", Toast.LENGTH_SHORT).show()
             }
         }
 
-        // ✅ Listener para Crear Cuenta
+        // Listener para Crear Cuenta
         botonCrear.setOnClickListener {
-            val correo = editCorreo.text.toString().trim()
-            val pass = editPass.text.toString().trim()
+            val correo = editCorreo.text.toString()
+            val pass = editPass.text.toString()
 
-            if (pass.length >= 8 && correo.isNotEmpty()) {
-                crearUsuario(correo, pass)
+            if (correo.isEmpty()) {
+                Toast.makeText(this, "Ingrese un correo", Toast.LENGTH_SHORT).show()
+            } else if (pass.length < 8) {
+                Toast.makeText(
+                    this,
+                    "La contraseña debe tener al menos 8 caracteres",
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
-                Toast.makeText(this, "Debe ingresar una contraseña de 8 o más dígitos y debe ingresar un correo", Toast.LENGTH_SHORT).show()
+                crearUsuario(correo, pass)
             }
         }
     }
 
     override fun onStart() {
         super.onStart()
-        // ✅ Verificar si hay usuario logueado
+        // Verificar si hay usuario logueado
         val currentUser = auth.currentUser
         if (currentUser != null) {
             val intentPantallaInicio = Intent(this, PantallaInicio::class.java)
             startActivity(intentPantallaInicio)
-            finish() // Cierra MainActivity para que no se pueda volver atrás
+            finish() // Cierra MainActivity para que no se pueda volver a la pantalla de login
         }
     }
 
-    // ✅ Función para crear usuario
+    // Funcion para crear usuario
     private fun crearUsuario(correo: String, pass: String) {
         auth.createUserWithEmailAndPassword(correo, pass)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // ✅ Usuario creado exitosamente → ir a PantallaInicio
-                    val intentPantallaInicio = Intent(this, PantallaInicio::class.java)
-                    startActivity(intentPantallaInicio)
-                    finish()
+                    Toast.makeText(this, "Usuario creado correctamente", Toast.LENGTH_SHORT).show()
+                    irPantallaInicio()
                 } else {
-                    // ❌ Error al crear usuario
-                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                    val error = task.exception?.message ?: "Error al crear usuario"
+                    Toast.makeText(this, error, Toast.LENGTH_LONG).show()
                 }
             }
     }
 
-    // ✅ Función para validar login
-    private fun loginValidation(correo: String, pass: String) {
+    private fun loginUsuario(correo: String, pass: String) {
         auth.signInWithEmailAndPassword(correo, pass)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // ✅ Login exitoso → ir a PantallaInicio
-                    val intentPantallaInicio = Intent(this, PantallaInicio::class.java)
-                    startActivity(intentPantallaInicio)
-                    finish()
+                    Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+                    irPantallaInicio()
                 } else {
-                    // ❌ Error en login
-                    Toast.makeText(baseContext, "No pudimos loguear ese usuario y contraseña", Toast.LENGTH_LONG).show()
+                    val error = task.exception?.message ?: "Usuario o contraseña incorrectos"
+                    Toast.makeText(this, error, Toast.LENGTH_LONG).show()
                 }
             }
+    }
+
+
+    // Funcion para validar login
+    private fun irPantallaInicio() {
+        val intent = Intent(this, PantallaInicio::class.java)
+        startActivity(intent)
+        finish()
     }
 }
