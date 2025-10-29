@@ -77,9 +77,6 @@
             binding.tarjetaCategorias.layoutManager = LinearLayoutManager(this)
             binding.tarjetaCategorias.adapter = adapter
 
-
-
-
         }
 
 

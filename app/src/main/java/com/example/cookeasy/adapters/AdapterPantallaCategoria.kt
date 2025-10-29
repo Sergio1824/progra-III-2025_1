@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.R
 import com.example.cookeasy.PantallaRecetas
 import com.example.cookeasy.dataClasses.Categoria
 import com.example.cookeasy.databinding.VistasCategoriasBinding
