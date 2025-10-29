@@ -15,9 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CookEasy">
         <activity
-            android:name=".Glide"
-            android:exported="false" />
-        <activity
             android:name=".PantallaRecetas"
             android:exported="false" />
         <activity
@@ -26,9 +23,7 @@
         <activity
             android:name=".PantallaCategorias"
             android:exported="false" />
-        <activity
-            android:name=".PantallaCrearUsuario"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
