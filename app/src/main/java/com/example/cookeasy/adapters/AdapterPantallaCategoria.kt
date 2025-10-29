@@ -58,7 +58,6 @@ class AdapterPantallaCategoria :
 
 
             binding.root.setOnClickListener {
-                // Abrir PantallaRecetas pasando la categoría seleccionada
                 val intent = Intent(context, PantallaRecetas::class.java)
                 intent.putExtra("categoriaSeleccionada", data.nombre)
                 context?.startActivity(intent)

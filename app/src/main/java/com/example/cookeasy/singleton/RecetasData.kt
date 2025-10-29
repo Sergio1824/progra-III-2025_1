@@ -7,7 +7,7 @@ import com.example.cookeasy.dataClasses.Receta
 object RecetasData {
 
     val listaDeRecetas = mutableListOf(
-        // -------------------- APERITIVOS --------------------
+// APERITITVOS:
         Receta(
             "1", "Ensalada César", "Aperitivos",
             "https://www.goodnes.com/sites/g/files/jgfbjl321/files/srh_recipes/755f697272cbcdc6e5df2adb44b1b705.jpg",
@@ -68,9 +68,9 @@ object RecetasData {
                 Instruccion(2, "Machacar el aguacate con limón y untar sobre el pan.")),
             esFavorito = true),
 
-        // -------------------- PLATO FUERTE --------------------
+// PLATO FUERTE:
         Receta("6", "Pasta Alfredo", "Plato fuerte",
-            "https://www.recetasnestle.com.ec/sites/default/files/styles/recipe_detail_desktop/public/2022-10/pasta-alfredo_0.jpg",
+            "https://images.aws.nestle.recipes/original/f627203bc885c4c644e29fd9846fed11_imagen9.jpg",
             "Media", "30 min",
             listOf(Ingrediente("Pasta fettuccine", "200 g"),
                 Ingrediente("Mantequilla", "2 cucharadas"),
@@ -83,7 +83,7 @@ object RecetasData {
             esFavorito = false),
 
         Receta("7", "Pollo al horno con papas", "Plato fuerte",
-            "https://www.simplyrecipes.com/thmb/pollo_horno_papas.jpg",
+            "https://www.cocinacaserayfacil.net/wp-content/uploads/2019/05/Pollo-al-horno-con-patatas-y-cebolla.jpg",
             "Media", "60 min",
             listOf(Ingrediente("Pollo", "1 kg"),
                 Ingrediente("Papas", "500 g"),
@@ -94,7 +94,7 @@ object RecetasData {
             esFavorito = true),
 
         Receta("8", "Lasaña", "Plato fuerte",
-            "https://www.simplyrecipes.com/thmb/lasana.jpg",
+            "https://static01.nyt.com/images/2023/08/31/multimedia/RS-Lasagna-hkjl/RS-Lasagna-hkjl-threeByTwoMediumAt2X.jpg",
             "Difícil", "90 min",
             listOf(Ingrediente("Pasta para lasaña", "200 g"),
                 Ingrediente("Carne molida", "300 g"),
@@ -106,7 +106,7 @@ object RecetasData {
             esFavorito = false),
 
         Receta("9", "Salmón a la plancha", "Plato fuerte",
-            "https://www.simplyrecipes.com/thmb/salmon_plancha.jpg",
+            "https://imag.bonviveur.com/salmon-a-la-plancha-facil-foto-cerca.jpg",
             "Media", "25 min",
             listOf(Ingrediente("Salmón", "2 filetes"),
                 Ingrediente("Limón", "1 unidad"),
@@ -116,7 +116,7 @@ object RecetasData {
             esFavorito = true),
 
         Receta("10", "Arroz con pollo", "Plato fuerte",
-            "https://www.simplyrecipes.com/thmb/arroz_pollo.jpg",
+            "https://imag.bonviveur.com/arroz-con-pollo.jpg",
             "Media", "40 min",
             listOf(Ingrediente("Arroz", "200 g"),
                 Ingrediente("Pollo", "300 g"),
@@ -126,9 +126,9 @@ object RecetasData {
                 Instruccion(3, "Cocinar hasta que el arroz esté listo.")),
             esFavorito = false),
 
-        // -------------------- DESAYUNO --------------------
+//DESAYUNO:
         Receta("11", "Pancakes", "Desayuno",
-            "https://www.simplyrecipes.com/thmb/pancakes.jpg",
+            "https://www.inspiredtaste.net/wp-content/uploads/2025/07/Pancake-Recipe-1.jpg",
             "Fácil", "20 min",
             listOf(Ingrediente("Harina", "1 taza"),
                 Ingrediente("Leche", "1 taza"),
@@ -139,7 +139,7 @@ object RecetasData {
             esFavorito = true),
 
         Receta("12", "Tostadas francesas", "Desayuno",
-            "https://www.simplyrecipes.com/thmb/tostadas_francesas.jpg",
+            "https://embed.widencdn.net/img/mccormick/l07tbd4l9q/800x800px/tostadas_a_la_francesa.jpg?crop=true&q=80&color=ffffffff&u=qwwekl",
             "Fácil", "15 min",
             listOf(Ingrediente("Pan", "2 rebanadas"),
                 Ingrediente("Huevo", "1 unidad"),
@@ -149,7 +149,7 @@ object RecetasData {
             esFavorito = false),
 
         Receta("13", "Omelette de queso", "Desayuno",
-            "https://www.simplyrecipes.com/thmb/omelette_queso.jpg",
+            "https://s-api.qcart.app/images/comoquiero-uploads/images/recipes/originals/3232.jpg?s=716x600&fit=cover&ext=webp",
             "Fácil", "10 min",
             listOf(Ingrediente("Huevos", "2 unidades"),
                 Ingrediente("Queso", "50 g"),
@@ -159,7 +159,7 @@ object RecetasData {
             esFavorito = true),
 
         Receta("14", "Smoothie de frutas", "Desayuno",
-            "https://www.simplyrecipes.com/thmb/smoothie_frutas.jpg",
+            "https://e00-xlk-cooking-elmundo.uecdn.es/files/article_main_microformat_4_3/uploads/2023/02/28/63fe6ec911620.jpeg",
             "Fácil", "5 min",
             listOf(Ingrediente("Frutas mixtas", "200 g"),
                 Ingrediente("Yogur", "100 ml"),
@@ -169,7 +169,7 @@ object RecetasData {
             esFavorito = true),
 
         Receta("15", "Bagel con aguacate", "Desayuno",
-            "https://www.simplyrecipes.com/thmb/bagel_aguacate.jpg",
+            "https://res.cloudinary.com/unaderecetas/image/upload/bagel-de-salmon-aguacate-y-maasdamer/Bagel_salmon_paso_3_opt.jpg",
             "Fácil", "10 min",
             listOf(Ingrediente("Bagel", "1 unidad"),
                 Ingrediente("Aguacate", "1 unidad")),
@@ -177,9 +177,9 @@ object RecetasData {
                 Instruccion(2, "Untar aguacate.")),
             esFavorito = false),
 
-        // -------------------- POSTRES --------------------
+  // POSTRES:
         Receta("16", "Flan de vainilla", "Postres",
-            "https://cdn7.kiwilimon.com/recetaimagen/37033/640x640/46357.jpg",
+            "https://imag.bonviveur.com/textura-del-flan-de-vainilla.jpg",
             "Fácil", "45 min",
             listOf(Ingrediente("Leche condensada", "1 lata"),
                 Ingrediente("Huevos", "4 unidades"),
@@ -192,7 +192,7 @@ object RecetasData {
             esFavorito = true),
 
         Receta("17", "Pastel de chocolate", "Postres",
-            "https://www.simplyrecipes.com/thmb/pastel_chocolate.jpg",
+            "https://www.recetasnestle.com.mx/sites/default/files/srh_recipes/1bc6405c821c74d73962cf9fa32f9518.png",
             "Media", "60 min",
             listOf(Ingrediente("Harina", "2 tazas"),
                 Ingrediente("Cacao en polvo", "1 taza"),
@@ -203,7 +203,7 @@ object RecetasData {
             esFavorito = true),
 
         Receta("18", "Helado casero", "Postres",
-            "https://www.simplyrecipes.com/thmb/helado_casero.jpg",
+            "https://cdn1.totalcommerce.cloud/cremhelado/product-image/es/helado-casero-mora-2.webp",
             "Difícil", "120 min",
             listOf(Ingrediente("Leche", "1 taza"),
                 Ingrediente("Crema", "1 taza"),
@@ -213,7 +213,7 @@ object RecetasData {
             esFavorito = false),
 
         Receta("19", "Brownies", "Postres",
-            "https://www.simplyrecipes.com/thmb/brownies.jpg",
+            "https://recetasdecocina.elmundo.es/wp-content/uploads/2016/11/brownie-de-chocolate.jpg",
             "Media", "40 min",
             listOf(Ingrediente("Chocolate", "200 g"),
                 Ingrediente("Mantequilla", "100 g"),
@@ -225,7 +225,7 @@ object RecetasData {
             esFavorito = true),
 
         Receta("20", "Cheesecake", "Postres",
-            "https://www.simplyrecipes.com/thmb/cheesecake.jpg",
+            "https://peopleenespanol.com/thmb/8vzve3hmeCgC-SVqkvAmuXnMMBE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/cheesecake-facil-con-leche-condensada-2000-4160526441114bf3ad8f3409586a2c8a.jpg",
             "Difícil", "90 min",
             listOf(Ingrediente("Queso crema", "500 g"),
                 Ingrediente("Galletas", "200 g"),
@@ -234,9 +234,9 @@ object RecetasData {
                 Instruccion(2, "Hornear la base, añadir crema de queso y refrigerar 4 horas.")),
             esFavorito = true),
 
-        // -------------------- BEBIDAS --------------------
+ // BEBIDAS:
         Receta("21", "Limonada frappé", "Bebidas",
-            "https://cdn0.recetasgratis.net/es/posts/0/6/2/limonada_frappe_10260_orig.jpg",
+            "https://img2.elyerromenu.com/images/el-cubanito/limonada-frape/img.webp",
             "Fácil", "10 min",
             listOf(Ingrediente("Limones", "3 unidades"),
                 Ingrediente("Agua fría", "2 tazas"),
@@ -248,7 +248,7 @@ object RecetasData {
             esFavorito = true),
 
         Receta("22", "Smoothie de fresa", "Bebidas",
-            "https://www.simplyrecipes.com/thmb/smoothie_fresa.jpg",
+            "https://s3.amazonaws.com/static.realcaliforniamilk.com/media/recipes_2/simple-strawberry-smoothie.jpg",
             "Fácil", "5 min",
             listOf(Ingrediente("Fresas", "200 g"),
                 Ingrediente("Yogur", "100 ml"),
@@ -257,8 +257,8 @@ object RecetasData {
                 Instruccion(2, "Servir frío.")),
             esFavorito = false),
 
-        Receta("23", "Café frappé", "Bebidas",
-            "https://www.simplyrecipes.com/thmb/cafe_frappe.jpg",
+        Receta("23", "Frappuccino", "Bebidas",
+            "https://www.thehungrybites.com/wp-content/uploads/2023/06/coffee-ice-cream-frappe-frappuccino-feat.jpg",
             "Fácil", "10 min",
             listOf(Ingrediente("Café", "1 taza"),
                 Ingrediente("Hielo", "1 taza"),
@@ -269,7 +269,7 @@ object RecetasData {
             esFavorito = true),
 
         Receta("24", "Té helado", "Bebidas",
-            "https://www.simplyrecipes.com/thmb/te_helado.jpg",
+            "https://imag.bonviveur.com/te-helado.jpg",
             "Fácil", "5 min",
             listOf(Ingrediente("Té negro", "2 bolsitas"),
                 Ingrediente("Agua", "500 ml"),
@@ -281,7 +281,7 @@ object RecetasData {
             esFavorito = false),
 
         Receta("25", "Jugo de naranja", "Bebidas",
-            "https://www.simplyrecipes.com/thmb/jugo_naranja.jpg",
+            "https://recetasdecocina.elmundo.es/wp-content/uploads/2024/02/zumo-naranja.jpg",
             "Fácil", "5 min",
             listOf(Ingrediente("Naranjas", "3 unidades")),
             listOf(Instruccion(1, "Exprimir las naranjas."),

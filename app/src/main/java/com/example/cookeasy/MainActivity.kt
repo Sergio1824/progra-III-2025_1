@@ -65,11 +65,11 @@ class MainActivity : AppCompatActivity() {
         if (currentUser != null) {
             val intentPantallaInicio = Intent(this, PantallaInicio::class.java)
             startActivity(intentPantallaInicio)
-            finish() // Cierra MainActivity para que no se pueda volver atrás
+            finish() // Cierra MainActivity para que no se pueda volver a la pantalla de login
         }
     }
 
-    // Función para crear usuario
+    // Funcion para crear usuario
     private fun crearUsuario(correo: String, pass: String) {
         auth.createUserWithEmailAndPassword(correo, pass)
             .addOnCompleteListener(this) { task ->
@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    // Función para validar login
+    // Funcion para validar login
     private fun irPantallaInicio() {
         val intent = Intent(this, PantallaInicio::class.java)
         startActivity(intent)
