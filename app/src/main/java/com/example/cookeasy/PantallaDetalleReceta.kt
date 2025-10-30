@@ -16,7 +16,7 @@ import com.example.cookeasy.singleton.RecetasData
 
 class PantallaDetalleReceta : AppCompatActivity() {
 
-    private lateinit var binding: ActivityPantallaDetalleRecetaBinding
+    private lateinit var binding: ActivityPantallaDetalleRecetaBinding //declaracion del binding
 
     val context: Context = this
 
@@ -27,8 +27,8 @@ class PantallaDetalleReceta : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityPantallaDetalleRecetaBinding.inflate(layoutInflater)
-        val view = binding.root
+        binding = ActivityPantallaDetalleRecetaBinding.inflate(layoutInflater) //inicializamos el binding
+        val view = binding.root  //resto de la sintaxis del binding
         setContentView(view)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -40,29 +40,29 @@ class PantallaDetalleReceta : AppCompatActivity() {
         val receta = RecetasData.listaDeRecetas.find { it.titulo == recetaTitulo }
 
 
-        binding.recipeTitle.text = receta?.titulo
+        binding.recipeTitle.text = receta?.titulo //le preguntamos para sacarle el titulo y la receta al singleton
         binding.recipeTime.text = "${receta?.dificultad} - ${receta?.tiempoPreparacion}"
 
 
 
 
-        binding.ingredientsList.text = "Ingredientes:\n"  +
+        binding.ingredientsList.text = "Ingredientes:\n"  + //chatsito ingredientes indstrucciones
                 (receta?.ingredientes?.joinToString("\n") { "• ${it.nombre}: ${it.cantidad}" } ?: "No hay ingredientes.")
 
         binding.instructionsText.text = "Instrucciones:\n" +
                 (receta?.instrucciones?.joinToString("\n") { "${it.numPaso}. ${it.descripcion}" } ?: "No hay instrucciones.")
 
 
-        Glide.with(this)
+        Glide.with(this) //imagenes de internet
             .load(receta?.imagenReceta)
             .into(binding.recipeImage)
 
 
-        binding.btnBack.setOnClickListener {
+        binding.btnBack.setOnClickListener { //volver a la pantalla de recetas
             finish()
         }
 
-        receta?.let { recetaSeleccionada ->
+        receta?.let { recetaSeleccionada ->//rehacer o modificarlo para usar JSON o ROOM
 
             binding.btnFav.text = if (recetaSeleccionada.esFavorito) "Ya es Favorito" else "Favorito"
 
