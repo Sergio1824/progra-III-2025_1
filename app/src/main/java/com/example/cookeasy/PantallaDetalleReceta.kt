@@ -62,6 +62,17 @@ class PantallaDetalleReceta : AppCompatActivity() {
             finish()
         }
 
+        receta?.let { recetaSeleccionada ->
+
+            binding.btnFav.text = if (recetaSeleccionada.esFavorito) "Ya es Favorito" else "Favorito"
+
+            binding.btnFav.setOnClickListener {
+                recetaSeleccionada.esFavorito = !recetaSeleccionada.esFavorito
+
+                binding.btnFav.text = if (recetaSeleccionada.esFavorito) "Ya es Favorito" else "Favorito"
+            }
+        }
+
         }
 
 
