@@ -1,12 +1,17 @@
 package com.example.cookeasy.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.cookeasy.PantallaDetalleReceta
+import com.example.cookeasy.PantallaRecetas
 import com.example.cookeasy.dataClasses.Receta
 import com.example.cookeasy.databinding.VistasRecetasBinding
+import kotlin.collections.addAll
+import kotlin.text.clear
 
 class AdapterPantallaReceta :
     RecyclerView.Adapter<AdapterPantallaReceta.EjemploCardViewHolder>() {
@@ -47,8 +52,16 @@ class AdapterPantallaReceta :
                     .into(binding.imagenReceta) // es la id del image view
             }
 
+
+            binding.root.setOnClickListener {
+                val intent = Intent(context, PantallaDetalleReceta::class.java)
+                intent.putExtra("recetaSeleccionada", data.titulo)
+                context?.startActivity(intent)
+            }
+
         }
-    }
+
+        }
 
     fun addDataCards(list: List<Receta>) {
         dataCards.clear()
@@ -56,3 +69,5 @@ class AdapterPantallaReceta :
     }
 
     }
+
+
