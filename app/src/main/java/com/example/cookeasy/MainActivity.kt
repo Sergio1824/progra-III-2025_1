@@ -89,6 +89,10 @@ class MainActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
                     irPantallaInicio()
+                    // Login exitoso → ir a PantallaInicio
+                    val intentPantallaInicio = Intent(this, PantallaInicio::class.java)
+                    startActivity(intentPantallaInicio)
+                    finish()
                 } else {
                     val error = task.exception?.message ?: "Usuario o contraseña incorrectos"
                     Toast.makeText(this, error, Toast.LENGTH_LONG).show()
