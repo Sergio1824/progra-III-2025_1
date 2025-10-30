@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.cookeasy.PantallaRecetas
 import com.example.cookeasy.dataClasses.Categoria
 import com.example.cookeasy.databinding.VistasCategoriasBinding
+import com.example.cookeasy.singleton.RecetasData
 
 
 class AdapterPantallaCategoria :
@@ -40,14 +41,18 @@ class AdapterPantallaCategoria :
 
     override fun getItemCount(): Int = dataCards.size
 
+
     // Donde hacer la logica
     inner class EjemploCardViewHolder(private val binding: VistasCategoriasBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun binding(data: Categoria) {
       //      binding.textAdapterEjemplo.text = data
+            val cantidadRecetas1 = RecetasData.listaDeRecetas.count(){
+                it.categoria == data.nombre
+            }
 
             binding.nombreCategoria.text = data.nombre
-            binding.contadorRecetas.text = "(${data.cantidadRecetas} RECETAS)"
+            binding.contadorRecetas.text = "({$cantidadRecetas1} RECETAS)"
 
             context?.let {
                 Glide.with(it) // Carga en el contexto
@@ -70,4 +75,6 @@ class AdapterPantallaCategoria :
         dataCards.clear()
         dataCards.addAll(list)
     }
+
+
 }
