@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CookEasy">
         <activity
+            android:name=".PantallaDetalleReceta"
+            android:exported="false" />
+        <activity
             android:name=".PantallaRecetas"
             android:exported="false" />
         <activity
@@ -23,7 +26,6 @@
         <activity
             android:name=".PantallaCategorias"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
