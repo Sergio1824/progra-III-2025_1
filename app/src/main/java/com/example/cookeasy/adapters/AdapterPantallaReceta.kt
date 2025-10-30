@@ -39,7 +39,7 @@ class AdapterPantallaReceta :
             //      binding.textAdapterEjemplo.text = data
 
             binding.nombreReceta.text = data.titulo
-            binding.infoReceta.text = "(${data.dificultad} - ${data.tiempoPreparacion} RECETAS)"
+            binding.infoReceta.text = "(${data.dificultad} - ${data.tiempoPreparacion})"
 
             context?.let {
                 Glide.with(it) // Carga en el contexto
