@@ -16,7 +16,7 @@ object RecipeManager {
     fun saveRecipes(context: Context, recipes: List<Receta>) {
         val jsonString = Json.encodeToString(recipes)
         getPrefs(context).edit().putString(RECIPES_KEY, jsonString).apply()
-    }
+    }   //recibe una lista nueva y esta es reemplazada por la version vieja
 
     fun getRecipes(context: Context): MutableList<Receta> {
         val jsonString = getPrefs(context).getString(RECIPES_KEY, null) ?: ""
@@ -25,13 +25,13 @@ object RecipeManager {
         } else {
             mutableListOf()
         }
-    }
+    }  //   lee la lista y la convierte  de json a tipo Receta.
 
     fun addRecipe(context: Context, newRecipe: Receta) {
         val currentRecipes = getRecipes(context)
         currentRecipes.add(newRecipe)
         saveRecipes(context, currentRecipes)
-    }
+    }   //recibe la receta y la anade al final de la lista y la guardo  con saveRecipes
 
     fun initialize(context: Context) {
         val existingRecipes = getRecipes(context)
@@ -39,6 +39,6 @@ object RecipeManager {
             val defaultRecipes = RecetasData.listaDeRecetas
             saveRecipes(context, defaultRecipes)
         }
-    }
+    }// toma las recetas(25) predeterminadas y las guarda para crear la primera lista que se muestra.
 
-}
+}//El recipe manager es el que controla las recetas, las lee y las reescribe, guarda ,etc.
