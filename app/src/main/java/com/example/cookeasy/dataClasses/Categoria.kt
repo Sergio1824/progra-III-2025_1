@@ -4,5 +4,5 @@ data class Categoria(
     val numCategoria: Int,
     val nombre:String,
     val imagenCategoria: String,     // depende de nosotros si usamos la imagen en url o lo metemos al drawable
-    val cantidadRecetas: Int
+    var cantidadRecetas: Int
 )
