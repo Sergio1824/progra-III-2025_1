@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material3.Button
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.cookeasy.databinding.ActivityPantallaInicioBinding
@@ -59,5 +60,4 @@ class PantallaInicio : AppCompatActivity() {
         val intent2 = Intent(context, PantallaCategorias::class.java)
         startActivity(intent2)
     }
-
 }

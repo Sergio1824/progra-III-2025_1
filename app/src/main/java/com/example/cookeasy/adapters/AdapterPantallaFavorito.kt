@@ -6,16 +6,24 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.cookeasy.PantallaDetalleReceta
-import com.example.cookeasy.activities.PantallaFavoritos
+import com.example.cookeasy.PantallaRecetas
+import com.example.cookeasy.dataClasses.Categoria
 import com.example.cookeasy.dataClasses.Receta
+import com.example.cookeasy.databinding.VistasCategoriasBinding
 import com.example.cookeasy.databinding.VistasRecetasBinding
+import com.example.cookeasy.singleton.RecetasData
 
-class AdapterPantallaReceta(recetasFavoritas: List<Receta>, favoritos: PantallaFavoritos) :
-    RecyclerView.Adapter<AdapterPantallaReceta.EjemploCardViewHolder>() {
+
+class AdapterPantallaFavorito :
+    RecyclerView.Adapter<AdapterPantallaFavorito.EjemploCardViewHolder>() {
 
     private val dataCards = mutableListOf<Receta>()
     private var context: Context? = null
+
+    private var onItemClick: ((Receta) -> Unit)? = null
+
+    // méto_do público para configurar el clic desde fuera
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EjemploCardViewHolder {
@@ -35,37 +43,37 @@ class AdapterPantallaReceta(recetasFavoritas: List<Receta>, favoritos: PantallaF
 
     override fun getItemCount(): Int = dataCards.size
 
+
     // Donde hacer la logica
-    inner class EjemploCardViewHolder(private val binding: VistasRecetasBinding) :
+    inner class EjemploCardViewHolder(private val binding: activity_pantalla_favoritos) :
         RecyclerView.ViewHolder(binding.root) {
         fun binding(data: Receta) {
             //      binding.textAdapterEjemplo.text = data
 
-            binding.nombreReceta.text = data.titulo
-            binding.infoReceta.text = "(${data.dificultad} - ${data.tiempoPreparacion})"
+            binding.nombreCategoria.text = data.nombre
+            binding.contadorRecetas.text = "({$cantidadRecetas1} RECETAS)"
 
             context?.let {
                 Glide.with(it) // Carga en el contexto
-                    .load(data.imagenReceta) //esta es la url de la clas
-                    .into(binding.imagenReceta) // es la id del image view
+                    .load(data.imagenCategoria) //esta es la url de la clas
+                    .into(binding.imagenCategoria) // es la id del image view
             }
 
 
             binding.root.setOnClickListener {
-                val intent = Intent(context, PantallaDetalleReceta::class.java)
-                intent.putExtra("recetaSeleccionada", data.titulo)
+                val intent = Intent(context, PantallaRecetas::class.java)
+                intent.putExtra("categoriaSeleccionada", data.nombre)
                 context?.startActivity(intent)
             }
 
-        }
 
         }
+    }
 
-    fun addDataCards(list: List<Receta>) {
+    fun addDataCards(list: List<Categoria>) {
         dataCards.clear()
         dataCards.addAll(list)
     }
 
-    }
 
-
+}

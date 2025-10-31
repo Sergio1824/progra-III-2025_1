@@ -7,12 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.cookeasy.adapters.AdapterPantallaCategoria
 import com.example.cookeasy.adapters.AdapterPantallaReceta
-import com.example.cookeasy.dataClasses.Ingrediente
-import com.example.cookeasy.dataClasses.Instruccion
-import com.example.cookeasy.dataClasses.Receta
-import com.example.cookeasy.databinding.ActivityPantallaCategoriasBinding
 import com.example.cookeasy.databinding.ActivityPantallaRecetasBinding
 import com.example.cookeasy.singleton.RecetasData
 
@@ -20,7 +15,7 @@ class PantallaRecetas : AppCompatActivity() {
 
     val context: Context = this
 
-    val adapter by lazy { AdapterPantallaReceta() }
+    val adapter by lazy { AdapterPantallaReceta(recetasFavoritas, this) }
 
     private lateinit var binding: ActivityPantallaRecetasBinding
 
