@@ -12,6 +12,8 @@ import com.bumptech.glide.Glide
 import com.example.cookeasy.adapters.AdapterPantallaDetalleReceta
 import com.example.cookeasy.databinding.ActivityPantallaDetalleRecetaBinding
 import com.example.cookeasy.databinding.ActivityPantallaRecetasBinding
+import com.example.cookeasy.managers.FavoritesManager
+import com.example.cookeasy.managers.RecipeManager
 import com.example.cookeasy.singleton.RecetasData
 
 class PantallaDetalleReceta : AppCompatActivity() {
@@ -37,7 +39,10 @@ class PantallaDetalleReceta : AppCompatActivity() {
         }
 
         val recetaTitulo = intent.getStringExtra("recetaSeleccionada")
-        val receta = RecetasData.listaDeRecetas.find { it.titulo == recetaTitulo }
+
+        //val receta = RecetasData.listaDeRecetas.find { it.titulo == recetaTitulo }
+
+        val receta = RecipeManager.getRecipes(this).find { it.titulo == recetaTitulo }
 
 
         binding.recipeTitle.text = receta?.titulo
@@ -46,11 +51,13 @@ class PantallaDetalleReceta : AppCompatActivity() {
 
 
 
-        binding.ingredientsList.text = "Ingredientes:\n"  +
-                (receta?.ingredientes?.joinToString("\n") { "• ${it.nombre}: ${it.cantidad}" } ?: "No hay ingredientes.")
+        binding.ingredientsList.text = "Ingredientes:\n" +
+                (receta?.ingredientes?.joinToString("\n") { "• ${it.nombre}: ${it.cantidad}" }
+                    ?: "No hay ingredientes.")
 
         binding.instructionsText.text = "Instrucciones:\n" +
-                (receta?.instrucciones?.joinToString("\n") { "${it.numPaso}. ${it.descripcion}" } ?: "No hay instrucciones.")
+                (receta?.instrucciones?.joinToString("\n") { "${it.numPaso}. ${it.descripcion}" }
+                    ?: "No hay instrucciones.")
 
 
         Glide.with(this)
@@ -62,18 +69,28 @@ class PantallaDetalleReceta : AppCompatActivity() {
             finish()
         }
 
+        /*        receta?.let { recetaSeleccionada ->
+
+                    binding.btnFav.text = if (recetaSeleccionada.esFavorito) "Ya es Favorito" else "Favorito"
+
+                    binding.btnFav.setOnClickListener {
+                        recetaSeleccionada.esFavorito = !recetaSeleccionada.esFavorito
+
+                        binding.btnFav.text = if (recetaSeleccionada.esFavorito) "Ya es Favorito" else "Favorito"
+           */
         receta?.let { recetaSeleccionada ->
 
-            binding.btnFav.text = if (recetaSeleccionada.esFavorito) "Ya es Favorito" else "Favorito"
+            fun updateButtonState() {
+                val isFavorite = FavoritesManager.isFavorite(context, recetaSeleccionada.NumReceta)
+                binding.btnFav.text = if (isFavorite) "Quitar de Favoritos" else "Añadir a Favoritos"
+            }
+
+            updateButtonState()
 
             binding.btnFav.setOnClickListener {
-                recetaSeleccionada.esFavorito = !recetaSeleccionada.esFavorito
-
-                binding.btnFav.text = if (recetaSeleccionada.esFavorito) "Ya es Favorito" else "Favorito"
+                FavoritesManager.toggleFavorite(context, recetaSeleccionada.NumReceta)
+                updateButtonState()
             }
         }
-
-        }
-
-
     }
+}
