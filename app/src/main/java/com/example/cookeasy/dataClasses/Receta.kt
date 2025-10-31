@@ -1,5 +1,8 @@
 package com.example.cookeasy.dataClasses
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Receta(
     val NumReceta: String,
     val titulo: String,

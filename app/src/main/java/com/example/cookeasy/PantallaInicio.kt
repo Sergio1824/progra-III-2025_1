@@ -37,7 +37,7 @@ class PantallaInicio : AppCompatActivity() {
         //-----------------------------------------------------------------------------------------
 
 
-        binding.cerrarSesion.setOnClickListener {
+        binding.cerrarSesion.setOnClickListener { //el binding llama al boton de xml  cerrar sesion para ejecutar la funcion cerrar sesion usuario de esta clase.
             cerrarSesionUsuario()
         }
         binding.buttonCategories.setOnClickListener {
@@ -47,9 +47,9 @@ class PantallaInicio : AppCompatActivity() {
 
     }
 
-    private fun cerrarSesionUsuario() {
+    private fun cerrarSesionUsuario() { // usa la funcion de lesloguear del firebase auth
         auth.signOut()
-        val intent = Intent(context, MainActivity::class.java)
+        val intent = Intent(context, MainActivity::class.java) // cambia de pantalla al segundo parametro del intent
 
         startActivity(intent)
         finish()

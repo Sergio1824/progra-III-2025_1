@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.cookeasy.PantallaRecetas
 import com.example.cookeasy.dataClasses.Categoria
 import com.example.cookeasy.databinding.VistasCategoriasBinding
+import com.example.cookeasy.managers.RecipeManager
 import com.example.cookeasy.singleton.RecetasData
 
 
@@ -45,11 +46,14 @@ class AdapterPantallaCategoria :
     // Donde hacer la logica
     inner class EjemploCardViewHolder(private val binding: VistasCategoriasBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+
         fun binding(data: Categoria) {
       //      binding.textAdapterEjemplo.text = data
-            val cantidadRecetas1 = RecetasData.listaDeRecetas.count(){
+
+            val cantidadRecetas1 = RecipeManager.getRecipes(context!!).count {
                 it.categoria == data.nombre
-            }
+            }//usamos el recipeManager(sharedPreferences)
 
             binding.nombreCategoria.text = data.nombre
             binding.contadorRecetas.text = "({$cantidadRecetas1} RECETAS)"

@@ -11,6 +11,7 @@
     import com.example.cookeasy.adapters.AdapterPantallaCategoria
     import com.example.cookeasy.dataClasses.Categoria
     import com.example.cookeasy.databinding.ActivityPantallaCategoriasBinding
+    import com.example.cookeasy.managers.RecipeManager
 
     class PantallaCategorias : AppCompatActivity() {
 
@@ -36,6 +37,9 @@
                 v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
                 insets
             }
+
+
+            RecipeManager.initialize((application)) //son las recetas por defefecto del singleton
 
 
             val listaDeCategorias = listOf(

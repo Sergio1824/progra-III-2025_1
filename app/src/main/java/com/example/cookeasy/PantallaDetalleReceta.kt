@@ -12,6 +12,8 @@ import com.bumptech.glide.Glide
 import com.example.cookeasy.adapters.AdapterPantallaDetalleReceta
 import com.example.cookeasy.databinding.ActivityPantallaDetalleRecetaBinding
 import com.example.cookeasy.databinding.ActivityPantallaRecetasBinding
+import com.example.cookeasy.managers.FavoritesManager
+import com.example.cookeasy.managers.RecipeManager
 import com.example.cookeasy.singleton.RecetasData
 
 class PantallaDetalleReceta : AppCompatActivity() {
@@ -37,7 +39,10 @@ class PantallaDetalleReceta : AppCompatActivity() {
         }
 
         val recetaTitulo = intent.getStringExtra("recetaSeleccionada")
-        val receta = RecetasData.listaDeRecetas.find { it.titulo == recetaTitulo }
+
+        //val receta = RecetasData.listaDeRecetas.find { it.titulo == recetaTitulo }
+
+        val receta = RecipeManager.getRecipes(this).find { it.titulo == recetaTitulo }
 
 
         binding.recipeTitle.text = receta?.titulo
