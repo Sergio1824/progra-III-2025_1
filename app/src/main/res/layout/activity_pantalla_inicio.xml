@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cream"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     android:padding="24dp"
     tools:context=".PantallaInicio">
 
     <ImageView
+
         android:id="@+id/icon_pot"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginTop="32dp"
-        android:src="@drawable/olla"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+        android:src="@drawable/olla" />
     <TextView
         android:id="@+id/text_title"
         android:layout_width="wrap_content"
@@ -28,10 +26,7 @@
         android:text="COOK EASY"
         android:textColor="@color/brown"
         android:textSize="34sp"
-        android:textStyle="italic"
-        app:layout_constraintTop_toBottomOf="@id/icon_pot"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/text_subtitle"
@@ -40,65 +35,39 @@
         android:layout_marginBottom="48dp"
         android:text="Tu recetario de confianza"
         android:textColor="@color/brown"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/text_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/button_categories"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/background_orange"
         android:text="Ver Categorias"
         android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/text_subtitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/button_favorites"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/background_red"
         android:text="Favoritos ❤"
         android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/button_categories"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/button_add_recipe"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginHorizontal="20dp"
         android:backgroundTint="@color/background_orange"
         android:text="Agregar Receta"
         android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/button_favorites"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/cerrar_sesion"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/dark_gray"
-        android:text="Cerrar Sesion"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 

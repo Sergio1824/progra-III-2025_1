@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PantallaCrearUsuario">
+
+    <TextView
+        android:id="@+id/TituloLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/purple"
+        android:gravity="center"
+        android:text="CREAR USUARIO"
+        android:textSize="28sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/Usuario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="USUARIO"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@id/TituloLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/Contrasena"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="CONTRASENA"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@id/Usuario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+/>
+
+    <Button
+        android:id="@+id/ButtonLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Crear Usuario"
+        android:textSize="20sp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@id/Contrasena"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

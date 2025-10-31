@@ -6,7 +6,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -104,28 +103,4 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
-    val recipes = listOf(
-        Recipe(
-            "Pasta Alfredo",
-            "Cremosa pasta con salsa blanca y pollo.",
-            R.drawable.pasta_alfredo,
-            "Fideos, pollo, crema, mantequilla, ajo.",
-            "1. Cocina los fideos. 2. Prepara la salsa. 3. Mezcla todo."
-        ),
-        Recipe(
-            "Ensalada César",
-            "Ensalada fresca con pollo, lechuga y aderezo.",
-            R.drawable.ensalada_cesar,
-            "Lechuga, pollo, crutones, queso parmesano, aderezo.",
-            "1. Lava los ingredientes. 2. Mezcla y sirve."
-        ),
-        Recipe(
-            "Brownies",
-            "Postre de chocolate suave y delicioso.",
-            R.drawable.brownies,
-            "Chocolate, mantequilla, azúcar, huevos, harina.",
-            "1. Derrite el chocolate. 2. Mezcla los ingredientes. 3. Hornea."
-        )
-    )
 }
