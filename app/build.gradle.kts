@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("com.google.gms.google-services")
+    kotlin("plugin.serialization") version "1.9.0"
 }
 
 android {
@@ -57,4 +58,5 @@ dependencies {
     implementation("com.google.firebase:firebase-auth-ktx:23.0.0")
     implementation("com.google.android.gms:play-services-auth:21.0.0")
     implementation("com.github.bumptech.glide:glide:5.0.5")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 }

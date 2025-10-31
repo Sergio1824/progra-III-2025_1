@@ -12,11 +12,13 @@ import com.bumptech.glide.Glide
 import com.example.cookeasy.adapters.AdapterPantallaDetalleReceta
 import com.example.cookeasy.databinding.ActivityPantallaDetalleRecetaBinding
 import com.example.cookeasy.databinding.ActivityPantallaRecetasBinding
+import com.example.cookeasy.managers.FavoritesManager
+import com.example.cookeasy.managers.RecipeManager
 import com.example.cookeasy.singleton.RecetasData
 
 class PantallaDetalleReceta : AppCompatActivity() {
 
-    private lateinit var binding: ActivityPantallaDetalleRecetaBinding //declaracion del binding
+    private lateinit var binding: ActivityPantallaDetalleRecetaBinding
 
     val context: Context = this
 
@@ -27,8 +29,8 @@ class PantallaDetalleReceta : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityPantallaDetalleRecetaBinding.inflate(layoutInflater) //inicializamos el binding
-        val view = binding.root  //resto de la sintaxis del binding
+        binding = ActivityPantallaDetalleRecetaBinding.inflate(layoutInflater)
+        val view = binding.root
         setContentView(view)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -37,32 +39,35 @@ class PantallaDetalleReceta : AppCompatActivity() {
         }
 
         val recetaTitulo = intent.getStringExtra("recetaSeleccionada")
-        val receta = RecetasData.listaDeRecetas.find { it.titulo == recetaTitulo }
+
+        //val receta = RecetasData.listaDeRecetas.find { it.titulo == recetaTitulo }
+
+        val receta = RecipeManager.getRecipes(this).find { it.titulo == recetaTitulo }
 
 
-        binding.recipeTitle.text = receta?.titulo //le preguntamos para sacarle el titulo y la receta al singleton
+        binding.recipeTitle.text = receta?.titulo
         binding.recipeTime.text = "${receta?.dificultad} - ${receta?.tiempoPreparacion}"
 
 
 
 
-        binding.ingredientsList.text = "Ingredientes:\n"  + //chatsito ingredientes indstrucciones
+        binding.ingredientsList.text = "Ingredientes:\n"  +
                 (receta?.ingredientes?.joinToString("\n") { "• ${it.nombre}: ${it.cantidad}" } ?: "No hay ingredientes.")
 
         binding.instructionsText.text = "Instrucciones:\n" +
                 (receta?.instrucciones?.joinToString("\n") { "${it.numPaso}. ${it.descripcion}" } ?: "No hay instrucciones.")
 
 
-        Glide.with(this) //imagenes de internet
+        Glide.with(this)
             .load(receta?.imagenReceta)
             .into(binding.recipeImage)
 
 
-        binding.btnBack.setOnClickListener { //volver a la pantalla de recetas
+        binding.btnBack.setOnClickListener {
             finish()
         }
 
-        receta?.let { recetaSeleccionada ->//rehacer o modificarlo para usar JSON o ROOM
+        receta?.let { recetaSeleccionada ->
 
             binding.btnFav.text = if (recetaSeleccionada.esFavorito) "Ya es Favorito" else "Favorito"
 

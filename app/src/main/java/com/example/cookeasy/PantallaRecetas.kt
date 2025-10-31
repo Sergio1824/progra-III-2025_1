@@ -14,6 +14,7 @@ import com.example.cookeasy.dataClasses.Instruccion
 import com.example.cookeasy.dataClasses.Receta
 import com.example.cookeasy.databinding.ActivityPantallaCategoriasBinding
 import com.example.cookeasy.databinding.ActivityPantallaRecetasBinding
+import com.example.cookeasy.managers.RecipeManager
 import com.example.cookeasy.singleton.RecetasData
 
 class PantallaRecetas : AppCompatActivity() {
@@ -42,9 +43,16 @@ class PantallaRecetas : AppCompatActivity() {
         binding.titleRecipe.text = categoriaSeleccionada ?: "RECETAS"
 
 
-        val recetasFiltradas = RecetasData.listaDeRecetas.filter {
+  //      val recetasFiltradas = RecetasData.listaDeRecetas.filter {
+   //         it.categoria.equals(categoriaSeleccionada, ignoreCase = true)
+     //   }
+
+
+        val allRecipes = RecipeManager.getRecipes(context)
+        val recetasFiltradas = allRecipes.filter {
             it.categoria.equals(categoriaSeleccionada, ignoreCase = true)
-        }
+        }   //
+
 
         adapter.addDataCards(recetasFiltradas)
 
