@@ -12,6 +12,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 
 
+//Es nuestra pantalla de menu principal, donde podemos escoger entre ver las categorias y recetas
+//o ir a la pantalla de nuestros favoritos o crear nuestras recetas
 class PantallaInicio : AppCompatActivity() {
     val context: Context = this
 
@@ -54,6 +56,7 @@ class PantallaInicio : AppCompatActivity() {
         finish()
     }
 
+    //la funcion es para ir a la pantalla de categorias
     private fun irPantallaCategorias() {
 
         val intent2 = Intent(context, PantallaCategorias::class.java)

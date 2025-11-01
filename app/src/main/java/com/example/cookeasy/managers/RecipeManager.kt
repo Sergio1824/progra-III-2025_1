@@ -6,6 +6,8 @@ import com.example.cookeasy.singleton.RecetasData
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
+
+//es como el administrador, es el que sabe como hablar con sharedPreferences para leer y escribir recetas.
 object RecipeManager {
     private val PREFS_NAME = "CookEasyPrefs"    //nombre del sharedPreferences
     private val RECIPES_KEY = "UserRecipesJson" //id para la lista de recetas
@@ -17,6 +19,7 @@ object RecipeManager {
         val jsonString = Json.encodeToString(recipes)
         getPrefs(context).edit().putString(RECIPES_KEY, jsonString).apply()
     }   //recibe una lista nueva y esta es reemplazada por la version vieja
+        //cuando toma la lista de objetos, a json
 
     fun getRecipes(context: Context): MutableList<Receta> {
         val jsonString = getPrefs(context).getString(RECIPES_KEY, null) ?: ""
@@ -25,13 +28,16 @@ object RecipeManager {
         } else {
             mutableListOf()
         }
-    }  //   lee la lista y la convierte  de json a tipo Receta.
+    }      // lee el json desde sharedPreferences y lo convierte de nuevo en una lista de objetos
+
 
     fun addRecipe(context: Context, newRecipe: Receta) {
         val currentRecipes = getRecipes(context)
         currentRecipes.add(newRecipe)
         saveRecipes(context, currentRecipes)
     }   //recibe la receta y la anade al final de la lista y la guardo  con saveRecipes
+        //es para anadir una nueva receta,1. lee la lista actual, 2. anade la nueva receta a la lista
+        //3. guarda la lista con la funcion ya creada antes: saveRecipe
 
     fun initialize(context: Context) {
         val existingRecipes = getRecipes(context)

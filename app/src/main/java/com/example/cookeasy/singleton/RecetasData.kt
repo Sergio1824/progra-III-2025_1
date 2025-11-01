@@ -4,6 +4,9 @@ import com.example.cookeasy.dataClasses.Ingrediente
 import com.example.cookeasy.dataClasses.Instruccion
 import com.example.cookeasy.dataClasses.Receta
 
+
+
+//es nuestra fuente de datos inicial, son las recetas que estan por default.
 object RecetasData {
 
     val listaDeRecetas = mutableListOf(
