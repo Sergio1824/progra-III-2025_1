@@ -67,14 +67,20 @@ class PantallaDetalleReceta : AppCompatActivity() {
             finish()
         }
 
+
         receta?.let { recetaSeleccionada ->
 
-            binding.btnFav.text = if (recetaSeleccionada.esFavorito) "Ya es Favorito" else "Favorito"
+            fun updateButtonState() {
+                val esFav = FavoritesManager.isFavorite(context, recetaSeleccionada.NumReceta)
+                binding.btnFav.text = if (esFav) "Ya es Favorito" else "Favorito"
+            }
+
+            updateButtonState()
 
             binding.btnFav.setOnClickListener {
-                recetaSeleccionada.esFavorito = !recetaSeleccionada.esFavorito
+                FavoritesManager.toggleFavorite(context, recetaSeleccionada.NumReceta)
 
-                binding.btnFav.text = if (recetaSeleccionada.esFavorito) "Ya es Favorito" else "Favorito"
+                updateButtonState()
             }
         }
 
