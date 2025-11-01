@@ -12,7 +12,7 @@
         android:id="@+id/title_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Detalle de Receta"
+        android:text="@string/app_detalle_receta"
         android:textColor="@color/light_brown"
         android:textSize="40sp"
         android:textStyle="italic"
@@ -114,7 +114,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Favorito"
+            android:text="@string/app_favoritos"
             android:backgroundTint="@color/red"
             android:textColor="@android:color/white"
             android:layout_marginEnd="8dp" />
@@ -124,7 +124,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Editar"
+            android:text="@string/app_editar"
             android:backgroundTint="@android:color/white"
             android:textColor="@color/light_brown"
             android:layout_marginStart="8dp" />
@@ -146,7 +146,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Volver"
+            android:text="@string/app_volver"
             android:backgroundTint="@color/blue"
             android:textColor="@android:color/white"
             android:layout_marginEnd="8dp" />
@@ -156,7 +156,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Eliminar"
+            android:text="@string/app_elimnar"
             android:backgroundTint="@android:color/white"
             android:textColor="@color/light_brown"
             android:layout_marginStart="8dp" />
