@@ -56,10 +56,11 @@ class PantallaAgregarReceta : AppCompatActivity() {
 
     private fun setupSpinners() {
         //datos para el spinner
+        //array adapter conecta la lista de datos simples con el componente de xml (spinenr)
         val categorias = arrayOf("Aperitivos", "Plato fuerte", "Desayuno", "Postres", "Bebidas")
         val categoriaAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categorias)
         categoriaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spCategoria.adapter = categoriaAdapter
+        binding.spCategoria.adapter = categoriaAdapter//para decirle que sea el traductor para obtener los datos a mostrar
 
         // datos para el spinner de dificultad
         val dificultades = arrayOf("Fácil", "Media", "Difícil")

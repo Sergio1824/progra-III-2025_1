@@ -39,6 +39,20 @@ object RecipeManager {
         //es para anadir una nueva receta,1. lee la lista actual, 2. anade la nueva receta a la lista
         //3. guarda la lista con la funcion ya creada antes: saveRecipe
 
+    fun deleteRecipe(context: Context, recipeId: String) {
+        val currentRecipes = getRecipes(context)
+        val recipeToDelete = currentRecipes.find { it.NumReceta == recipeId }
+        if (recipeToDelete != null) {
+            currentRecipes.remove(recipeToDelete)
+            saveRecipes(context, currentRecipes)
+        }
+    }        // obtiene la lista actual de nuestras recetas
+            //  identifica y busca cual va a ser la receta que se va a eliminar
+            //  si la encuentra y no es null la borra con remove
+            //  guarda la lista actualizada con nuestra funcion ya creada
+
+
+
     fun initialize(context: Context) {
         val existingRecipes = getRecipes(context)
         if (existingRecipes.isEmpty()) {

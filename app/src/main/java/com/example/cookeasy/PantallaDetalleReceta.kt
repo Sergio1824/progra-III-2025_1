@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -84,6 +85,11 @@ class PantallaDetalleReceta : AppCompatActivity() {
                 FavoritesManager.toggleFavorite(context, recetaSeleccionada.NumReceta)
 
                 updateButtonState()
+            }
+            binding.btnDelete.setOnClickListener {
+                RecipeManager.deleteRecipe(context, recetaSeleccionada.NumReceta)
+                Toast.makeText(context, "Receta eliminada", Toast.LENGTH_SHORT).show()
+                finish()
             }
         }
 
