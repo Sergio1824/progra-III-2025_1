@@ -16,6 +16,10 @@
     <string name="app_editar">Editar</string>
     <string name="app_volver">Volver</string>
     <string name="app_elimnar">Eliminar</string>
+    <string name="app_nueva_receta">NUEVA RECETA</string>
+    <string name="app_guardar_receta">Guardar Receta ✅</string>
+
+
 
 
 </resources>
