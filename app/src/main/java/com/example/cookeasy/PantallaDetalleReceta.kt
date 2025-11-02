@@ -23,7 +23,6 @@ class PantallaDetalleReceta : AppCompatActivity() {
 
     val context: Context = this
 
-    val adapter by lazy { AdapterPantallaDetalleReceta() }
 
 
     @SuppressLint("SetTextI18n")    //quita el subrayado amarillo  de los bindings
@@ -49,8 +48,6 @@ class PantallaDetalleReceta : AppCompatActivity() {
 
         binding.recipeTitle.text = receta?.titulo
         binding.recipeTime.text = "${receta?.dificultad} - ${receta?.tiempoPreparacion}"
-
-
 
 
         binding.ingredientsList.text = "Ingredientes:\n"  +
@@ -94,6 +91,5 @@ class PantallaDetalleReceta : AppCompatActivity() {
         }
 
         }
-
 
     }
