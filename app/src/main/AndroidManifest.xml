@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CookEasy">
         <activity
+            android:name=".PantallaAgregarReceta"
+            android:exported="false" />
+        <activity
             android:name=".PantallaDetalleReceta"
             android:exported="false" />
         <activity
