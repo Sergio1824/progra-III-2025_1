@@ -44,6 +44,9 @@ class PantallaInicio : AppCompatActivity() {
         binding.buttonCategories.setOnClickListener {
             irPantallaCategorias()
         }
+        binding.buttonAddRecipe.setOnClickListener {
+            irPantallaAgregarReceta()
+        }
 
 
     }
@@ -60,6 +63,14 @@ class PantallaInicio : AppCompatActivity() {
     private fun irPantallaCategorias() {
 
         val intent2 = Intent(context, PantallaCategorias::class.java)
+        startActivity(intent2)
+    }
+
+
+    //la funcion es para ir a la pantalla agregar receta
+    private fun irPantallaAgregarReceta() {
+
+        val intent2 = Intent(context, PantallaAgregarReceta::class.java)
         startActivity(intent2)
     }
 
