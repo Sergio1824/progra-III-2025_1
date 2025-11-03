@@ -1,66 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/background_space"
+    android:background="@drawable/backgroun_light_cream"
     tools:context=".PantallaCategorias">
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- Fila de Búsqueda -->
+    <TextView
+        android:id="@+id/title_busqueda"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="26dp"
+        android:text="@string/app_buscar_receta"
+        android:textColor="@color/light_brown"
+        android:textSize="34sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/button_busqueda"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+        android:layout_marginEnd="20dp"
+        android:background="@color/light_gray"
+        android:src="@drawable/lupa"
+        app:layout_constraintBottom_toBottomOf="@id/title_busqueda"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /> <!-- Centrado verticalmente con el título -->
 
-        <TextView
-            android:id="@+id/title_busqueda"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/app_buscar_receta"
-            android:textColor="@color/light_brown"
-            android:textSize="34sp"
-            android:textStyle="italic" />
-        <ImageView
-            android:id="@+id/button_busqueda"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginStart="60dp"
-            android:background="@color/light_gray"
-            android:src="@drawable/lupa"/>
-
-    </LinearLayout>
-
+    <!-- Título de Categorías -->
     <TextView
         android:id="@+id/title_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="20dp"
         android:text="@string/app_categorias"
         android:textColor="@color/light_brown"
         android:textSize="54sp"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_busqueda" /> <!-- Debajo del elemento más alto de la fila anterior (el botón) -->
 
-
+    <!-- Lista de Categorías -->
     <androidx.recyclerview.widget.RecyclerView
-
-
         android:id="@+id/tarjeta_categorias"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/vistas_categorias">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_category"
+        tools:listitem="@layout/vistas_categorias" />
 
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

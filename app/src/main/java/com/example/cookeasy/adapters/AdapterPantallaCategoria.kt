@@ -58,7 +58,7 @@ class AdapterPantallaCategoria :
             //mostrar el texto para cada categoria, su nombre y su cantidad de recetas que hay en cada categorai
 
             binding.nombreCategoria.text = data.nombre
-            binding.contadorRecetas.text = "({$cantidadRecetas1} RECETAS)"
+            binding.contadorRecetas.text = "(${cantidadRecetas1} RECETAS)"
 
 
             //para cargar las imagenes de cada categoria  (glide)
