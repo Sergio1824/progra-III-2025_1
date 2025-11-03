@@ -47,8 +47,9 @@ class PantallaInicio : AppCompatActivity() {
         binding.buttonAddRecipe.setOnClickListener {
             irPantallaAgregarReceta()
         }
-
-
+        binding.buttonFavorites.setOnClickListener {
+            irPantallaFavoritos()
+        }
     }
 
     private fun cerrarSesionUsuario() { // usa la funcion de lesloguear del firebase auth
@@ -73,5 +74,9 @@ class PantallaInicio : AppCompatActivity() {
         val intent2 = Intent(context, PantallaAgregarReceta::class.java)
         startActivity(intent2)
     }
+    private fun irPantallaFavoritos() {
 
+        val intent4 = Intent(context, PantallaFavoritos::class.java)
+        startActivity(intent4)
+    }
 }
