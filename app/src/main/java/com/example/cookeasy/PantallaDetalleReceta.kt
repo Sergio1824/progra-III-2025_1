@@ -88,6 +88,12 @@ class PantallaDetalleReceta : AppCompatActivity() {
                 Toast.makeText(context, "Receta eliminada", Toast.LENGTH_SHORT).show()
                 finish()
             }
+            binding.btnEdit.setOnClickListener {
+                val intent = Intent(context, PantallaAgregarReceta::class.java)
+                intent.putExtra("RECIPE_ID_TO_EDIT", recetaSeleccionada.NumReceta)
+                startActivity(intent)
+                finish()
+            }
         }
 
         }

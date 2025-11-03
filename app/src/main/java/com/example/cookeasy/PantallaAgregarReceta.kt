@@ -1,25 +1,17 @@
 package com.example.cookeasy
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.cookeasy.R
-import com.example.cookeasy.adapters.AdapterPantallaReceta
 import com.example.cookeasy.dataClasses.Ingrediente
 import com.example.cookeasy.dataClasses.Instruccion
 import com.example.cookeasy.dataClasses.Receta
 import com.example.cookeasy.databinding.ActivityPantallaAgregarRecetaBinding
-import com.example.cookeasy.databinding.ActivityPantallaRecetasBinding
 import com.example.cookeasy.managers.RecipeManager
 
 //import com.tuapp.databinding.ActivityPantallaAgregarRecetaBinding
@@ -29,6 +21,7 @@ class PantallaAgregarReceta : AppCompatActivity() {
     val context: Context = this
 
     private lateinit var binding: ActivityPantallaAgregarRecetaBinding
+    private var recetaParaEditar: Receta? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +40,29 @@ class PantallaAgregarReceta : AppCompatActivity() {
 
           // es la configuracion de los menus de eleccion desplegables para las categorias y la dificultad
         setupSpinners()
+
+
+        val recipeIdToEdit = intent.getStringExtra("RECIPE_ID_TO_EDIT")
+
+        if (recipeIdToEdit != null) {
+            // MODO DE EDICION
+            // busca la receta para editar en el manager de recetas
+            recetaParaEditar = RecipeManager.getRecipes(this).find { it.NumReceta == recipeIdToEdit }
+
+            // si lo encontramos, rellena el formulario
+            if (recetaParaEditar != null) {
+                // cambia el texto que esta en el titulo y en el boton
+                binding.tvTitulo.text = "Editar Receta"
+                binding.btnGuardar.text = "Guardar Cambios"
+                // llama a la funcion para llenar los espacios
+                rellenarFormulario(recetaParaEditar!!)
+            }
+        } else {
+            // vuelve t odo a lo que estaba antes
+            binding.tvTitulo.text = "Nueva Receta"
+            binding.btnGuardar.text = "Guardar Receta ✅"
+        }
+
 
         binding.btnGuardar.setOnClickListener {
             guardarNuevaReceta()
@@ -67,6 +83,29 @@ class PantallaAgregarReceta : AppCompatActivity() {
         val dificultadAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, dificultades)
         dificultadAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spDificultad.adapter = dificultadAdapter
+    }
+
+
+    private fun rellenarFormulario(receta: Receta) {
+        binding.etNombre.setText(receta.titulo)
+        binding.etTiempo.setText(receta.tiempoPreparacion)
+        binding.etUrlImagen.setText(receta.imagenReceta)
+
+        // convierte las listas a texto
+        val ingredientesTexto = receta.ingredientes.joinToString("\n") { "${it.nombre}: ${it.cantidad}" }
+        val instruccionesTexto = receta.instrucciones.joinToString("\n") { it.descripcion }
+
+        binding.etIngredientes.setText(ingredientesTexto)
+        binding.etInstrucciones.setText(instruccionesTexto)
+
+        // selecciona los valores de los spinneres
+        val categoriaAdapter = binding.spCategoria.adapter as ArrayAdapter<String>
+        val categoriaPosition = categoriaAdapter.getPosition(receta.categoria)
+        binding.spCategoria.setSelection(categoriaPosition)
+
+        val dificultadAdapter = binding.spDificultad.adapter as ArrayAdapter<String>
+        val dificultadPosition = dificultadAdapter.getPosition(receta.dificultad)
+        binding.spDificultad.setSelection(dificultadPosition)
     }
 
 
