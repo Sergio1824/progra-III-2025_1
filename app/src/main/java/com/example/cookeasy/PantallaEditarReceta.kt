@@ -11,22 +11,21 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.cookeasy.dataClasses.Ingrediente
 import com.example.cookeasy.dataClasses.Instruccion
 import com.example.cookeasy.dataClasses.Receta
-import com.example.cookeasy.databinding.ActivityPantallaAgregarRecetaBinding // Usa el binding original
+import com.example.cookeasy.databinding.ActivityPantallaEditarRecetaBinding // Importa el nuevo binding
 import com.example.cookeasy.managers.RecipeManager
 
-class PantallaAgregarReceta : AppCompatActivity() {
+class PantallaEditarReceta : AppCompatActivity() {
 
     val context: Context = this
 
-    private lateinit var binding: ActivityPantallaAgregarRecetaBinding // Usa el binding original
-
-    // --- ¡YA NO NECESITAMOS LA VARIABLE recetaParaEditar! ---
+    private lateinit var binding: ActivityPantallaEditarRecetaBinding // Usa el nuevo binding
+    private var recetaParaEditar: Receta? = null // Esta variable guardará la receta que estamos editando
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        binding = ActivityPantallaAgregarRecetaBinding.inflate(layoutInflater)
+        binding = ActivityPantallaEditarRecetaBinding.inflate(layoutInflater) // Usa el nuevo binding
         val view = binding.root
         setContentView(view)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -38,13 +37,33 @@ class PantallaAgregarReceta : AppCompatActivity() {
         // Configura los spinners
         setupSpinners()
 
-        // --- ¡YA NO NECESITAMOS LA LÓGICA DE EDICIÓN AQUÍ! ---
-        // La pantalla ahora siempre es para "Nueva Receta"
-        binding.tvTitulo.text = "Nueva Receta"
-        binding.btnGuardar.text = "Guardar Receta ✅"
+        // --- Lógica de Edición ---
+        // Esta pantalla SÓLO edita, así que asumimos que SIEMPRE recibimos un ID
+        val recipeIdToEdit = intent.getStringExtra("RECIPE_ID_TO_EDIT")
 
+        if (recipeIdToEdit == null) {
+            // Si por algún error no llega el ID, mostramos un error y cerramos la pantalla
+            Toast.makeText(this, "Error: No se encontró la receta", Toast.LENGTH_LONG).show()
+            finish()
+            return // Detenemos la ejecución de onCreate
+        }
+
+        // Buscamos la receta
+        recetaParaEditar = RecipeManager.getRecipes(this).find { it.NumReceta == recipeIdToEdit }
+
+        // Si la encontramos, rellenamos el formulario
+        if (recetaParaEditar != null) {
+            rellenarFormulario(recetaParaEditar!!)
+        } else {
+            // Si el ID existe pero la receta fue borrada, mostramos error y cerramos
+            Toast.makeText(this, "Error: Receta no válida", Toast.LENGTH_LONG).show()
+            finish()
+            return
+        }
+
+        // Asignamos el listener al botón de guardar
         binding.btnGuardar.setOnClickListener {
-            guardarNuevaReceta()
+            guardarCambiosEditados()
         }
     }
 
@@ -61,10 +80,37 @@ class PantallaAgregarReceta : AppCompatActivity() {
         binding.spDificultad.adapter = dificultadAdapter
     }
 
-    // --- ¡YA NO NECESITAMOS rellenarFormulario()! ---
+    // Esta función es idéntica a la que tenías
+    private fun rellenarFormulario(receta: Receta) {
+        binding.etNombre.setText(receta.titulo)
+        binding.etTiempo.setText(receta.tiempoPreparacion)
+        binding.etUrlImagen.setText(receta.imagenReceta)
+
+        val ingredientesTexto = receta.ingredientes.joinToString("\n") { "${it.nombre}: ${it.cantidad}" }
+        val instruccionesTexto = receta.instrucciones.joinToString("\n") { it.descripcion }
+
+        binding.etIngredientes.setText(ingredientesTexto)
+        binding.etInstrucciones.setText(instruccionesTexto)
+
+        val categoriaAdapter = binding.spCategoria.adapter as ArrayAdapter<String>
+        val categoriaPosition = categoriaAdapter.getPosition(receta.categoria)
+        binding.spCategoria.setSelection(categoriaPosition)
+
+        val dificultadAdapter = binding.spDificultad.adapter as ArrayAdapter<String>
+        val dificultadPosition = dificultadAdapter.getPosition(receta.dificultad)
+        binding.spDificultad.setSelection(dificultadPosition)
+    }
 
 
-    private fun guardarNuevaReceta() {
+    // Esta es la función de "Guardar" PERO solo para editar
+    private fun guardarCambiosEditados() {
+
+        // Primero, validamos que la receta original exista
+        if (recetaParaEditar == null) {
+            Toast.makeText(this, "Error al guardar, receta no encontrada", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
 
         val titulo = binding.etNombre.text.toString().trim()
         val categoria = binding.spCategoria.selectedItem.toString()
@@ -96,25 +142,21 @@ class PantallaAgregarReceta : AppCompatActivity() {
             "https://st4.depositphotos.com/16122460/29909/i/450/depositphotos_299099010-stock-photo-dirty-plate-with-food-leftovers.jpg"
         }
 
-        // --- ¡YA NO NECESITAMOS EL IF PARA EDITAR! ---
-
-        // 🔹 Siempre es una receta nueva
-        val nuevoId = System.currentTimeMillis().toString()
-
-        val nuevaReceta = Receta(
-            NumReceta = nuevoId,
+        // 🔹 Aquí solo actualizamos la receta existente
+        // Usamos .copy() sobre la receta original para mantener su ID y estado de favorito
+        val recetaEditada = recetaParaEditar!!.copy(
             titulo = titulo,
             categoria = categoria,
             imagenReceta = imagenFinal,
             dificultad = dificultad,
             tiempoPreparacion = tiempo,
             ingredientes = listaIngredientes,
-            instrucciones = listaInstrucciones,
-            esFavorito = false
+            instrucciones = listaInstrucciones
+            // Nota: NumReceta y esFavorito se mantienen igual que la original
         )
 
-        RecipeManager.addRecipe(this, nuevaReceta)
-        Toast.makeText(this, "Receta '$titulo' guardada con éxito", Toast.LENGTH_SHORT).show()
-        finish()
+        RecipeManager.updateRecipe(this, recetaEditada)
+        Toast.makeText(this, "Cambios guardados para '${recetaEditada.titulo}'", Toast.LENGTH_SHORT).show()
+        finish() // Cerramos la pantalla de edición
     }
 }

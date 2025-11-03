@@ -62,10 +62,14 @@ class AdapterPantallaReceta :
                     .into(binding.imagenReceta) // es la id del image view
             }
 
-
             binding.root.setOnClickListener {
                 val intent = Intent(context, PantallaDetalleReceta::class.java)
-                intent.putExtra("recetaSeleccionada", data.titulo)
+
+                // ▼▼▼ LÍNEA MODIFICADA ▼▼▼
+                // Enviamos el ID único (NumReceta) en lugar del título.
+                intent.putExtra("RECETA_ID_SELECCIONADA", data.NumReceta)
+                // ▲▲▲ LÍNEA MODIFICADA ▲▲▲
+
                 context?.startActivity(intent)
             }
 

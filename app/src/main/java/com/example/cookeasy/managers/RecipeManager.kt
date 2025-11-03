@@ -52,20 +52,21 @@ object RecipeManager {
     //  si la encuentra y no es null la borra con remove
     //  guarda la lista actualizada con nuestra funcion ya creada
 
-    fun updateRecipe(context: Context, updatedRecipe: Receta) {
-
-        val currentRecipes = getRecipes(context)
-        val index = currentRecipes.indexOfFirst { it.NumReceta == updatedRecipe.NumReceta }
+    fun updateRecipe(context: Context, recetaEditada: Receta) {
+        val listaActual = getRecipes(context).toMutableList()
+        val index = listaActual.indexOfFirst { it.NumReceta == recetaEditada.NumReceta }
 
         if (index != -1) {
-            currentRecipes[index] = updatedRecipe
-            saveRecipes(context, currentRecipes)
-        }// obtiene la lista actual de nuestras recetas
-        // encuentra la posicion de la receta vieja(la seleccioanda)
-        //  si la encuentra osea no es -1, la reemplaza en esa posicion
-        // guarda la lista actualizada con nuestra funcion ya creada
+            listaActual[index] = recetaEditada
+        } else {
+            listaActual.add(recetaEditada)
+        }
 
-    }
+        saveRecipes(context, listaActual)
+    }// obtiene la lista actual de nuestras recetas
+    // encuentra la posicion de la receta vieja(la seleccioanda)
+    //  si la encuentra osea no es -1, la reemplaza en esa posicion
+    // guarda la lista actualizada con nuestra funcion ya creada
         fun initialize(context: Context) {
             val existingRecipes = getRecipes(context)
             if (existingRecipes.isEmpty()) {
