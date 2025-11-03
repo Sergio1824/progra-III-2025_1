@@ -83,6 +83,11 @@
             binding.tarjetaCategorias.layoutManager = LinearLayoutManager(this)
             binding.tarjetaCategorias.adapter = adapter
 
+
+            binding.buttonBusqueda.setOnClickListener {
+                val intent = Intent(this, PantallaBusqueda::class.java)
+                startActivity(intent)
+            }
         }
 
 
