@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -22,10 +23,9 @@ class PantallaDetalleReceta : AppCompatActivity() {
 
     val context: Context = this
 
-    val adapter by lazy { AdapterPantallaDetalleReceta() }
 
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n")    //quita el subrayado amarillo  de los bindings
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -38,6 +38,7 @@ class PantallaDetalleReceta : AppCompatActivity() {
             insets
         }
 
+        //obtiene la receta selecccionada que adapter pantalla nos paso a traves del intent
         val recetaTitulo = intent.getStringExtra("recetaSeleccionada")
 
         //val receta = RecetasData.listaDeRecetas.find { it.titulo == recetaTitulo }
@@ -49,8 +50,6 @@ class PantallaDetalleReceta : AppCompatActivity() {
         binding.recipeTime.text = "${receta?.dificultad} - ${receta?.tiempoPreparacion}"
 
 
-
-
         binding.ingredientsList.text = "Ingredientes:\n"  +
                 (receta?.ingredientes?.joinToString("\n") { "• ${it.nombre}: ${it.cantidad}" } ?: "No hay ingredientes.")
 
@@ -58,6 +57,7 @@ class PantallaDetalleReceta : AppCompatActivity() {
                 (receta?.instrucciones?.joinToString("\n") { "${it.numPaso}. ${it.descripcion}" } ?: "No hay instrucciones.")
 
 
+        //para mostrar las imagenes de la receta seleccionada
         Glide.with(this)
             .load(receta?.imagenReceta)
             .into(binding.recipeImage)
@@ -67,18 +67,29 @@ class PantallaDetalleReceta : AppCompatActivity() {
             finish()
         }
 
+
         receta?.let { recetaSeleccionada ->
 
-            binding.btnFav.text = if (recetaSeleccionada.esFavorito) "Ya es Favorito" else "Favorito"
+            // es una funcion que lee el estado actual del favorito y cambia el texto para ubicarnos mejor
+            fun updateButtonState() {
+                val esFav = FavoritesManager.isFavorite(context, recetaSeleccionada.NumReceta)
+                binding.btnFav.text = if (esFav) "Ya es Favorito" else "Favorito"
+            }
+
+            updateButtonState()
 
             binding.btnFav.setOnClickListener {
-                recetaSeleccionada.esFavorito = !recetaSeleccionada.esFavorito
+                FavoritesManager.toggleFavorite(context, recetaSeleccionada.NumReceta)
 
-                binding.btnFav.text = if (recetaSeleccionada.esFavorito) "Ya es Favorito" else "Favorito"
+                updateButtonState()
+            }
+            binding.btnDelete.setOnClickListener {
+                RecipeManager.deleteRecipe(context, recetaSeleccionada.NumReceta)
+                Toast.makeText(context, "Receta eliminada", Toast.LENGTH_SHORT).show()
+                finish()
             }
         }
 
         }
-
 
     }

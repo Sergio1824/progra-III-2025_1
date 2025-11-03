@@ -9,7 +9,8 @@ object FavoritesManager {
         // busca en la lista de recetas si la receta es favorita
         val recipe = RecipeManager.getRecipes(context).find { it.NumReceta == recipeId }
         return recipe?.esFavorito ?: false
-    }
+    }   // le pide al RecipeManager la lista completa de recetas, busca la receta con su Id
+        // y devuelve el valor que tenga en el boolean de Receta
 
     fun toggleFavorite(context: Context, recipeId: String) {
         // obtiene la lista actual de recetas

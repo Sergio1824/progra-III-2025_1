@@ -10,6 +10,8 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 
+
+// Es la pantalla de Login y el registro que tenemos con FireBase
 class MainActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth

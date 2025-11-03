@@ -13,6 +13,9 @@ import com.example.cookeasy.databinding.VistasRecetasBinding
 import kotlin.collections.addAll
 import kotlin.text.clear
 
+
+
+//los adapters con para conectar, en este caso la lista de Recetas con el recyclerView de vistas_recetas
 class AdapterPantallaReceta :
     RecyclerView.Adapter<AdapterPantallaReceta.EjemploCardViewHolder>() {
 
@@ -43,8 +46,15 @@ class AdapterPantallaReceta :
         fun binding(data: Receta) {
             //      binding.textAdapterEjemplo.text = data
 
+
+
+            //mostrar el texto para cada receta, su nombre y su informacion
             binding.nombreReceta.text = data.titulo
             binding.infoReceta.text = "(${data.dificultad} - ${data.tiempoPreparacion})"
+
+
+
+            //para cargar las imagenes de cada receta  (glide)
 
             context?.let {
                 Glide.with(it) // Carga en el contexto

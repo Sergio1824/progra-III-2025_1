@@ -2,7 +2,7 @@ package com.example.cookeasy.dataClasses
 
 import kotlinx.serialization.Serializable
 
-
+//  Es una propiedad de la data class principal "Receta" para definir ingredientes
 @Serializable
 data class Ingrediente(
     val nombre: String,

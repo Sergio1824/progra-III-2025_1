@@ -1,5 +1,7 @@
 package com.example.cookeasy.dataClasses
 
+
+//es la estructura de categorias, todos sus atributos y lo que mostramos en:  PantallaCategorias
 data class Categoria(
     val numCategoria: Int,
     val nombre:String,
