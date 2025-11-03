@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CookEasy">
         <activity
+            android:name=".PantallaBusqueda"
+            android:exported="false" />
+        <activity
+            android:name=".PantallaFavoritos"
+            android:exported="false" />
+        <activity
             android:name=".PantallaAgregarReceta"
             android:exported="false" />
         <activity
