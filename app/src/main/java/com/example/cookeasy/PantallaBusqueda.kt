@@ -14,7 +14,7 @@ import com.example.cookeasy.dataClasses.Receta // Importamos Receta
 import com.example.cookeasy.databinding.ActivityPantallaBusquedaBinding // Binding de tu nuevo XML
 import com.example.cookeasy.managers.RecipeManager
 
-// Esta pantalla permite al usuario buscar recetas por nombre
+// esta pantalla permite al usuario buscar recetas por nombre
 class PantallaBusqueda : AppCompatActivity() {
 
     val context: Context = this
@@ -24,7 +24,7 @@ class PantallaBusqueda : AppCompatActivity() {
 
     private lateinit var binding: ActivityPantallaBusquedaBinding
 
-    // Guardamos la lista completa en memoria para filtrar rápido
+    // gguardamos la lista completa en memoria para filtrar rapido
     private var listaCompletaDeRecetas = listOf<Receta>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,22 +40,21 @@ class PantallaBusqueda : AppCompatActivity() {
             insets
         }
 
-        // 1. Cargar la lista completa de recetas UNA SOLA VEZ
+        //cargar la lista completa de recetas la que esta en singletton
         listaCompletaDeRecetas = RecipeManager.getRecipes(context)
 
-        // 2. Configurar el RecyclerView
+        // esta es la configuracion del recycler view
         binding.tarjetaBusqueda.layoutManager = LinearLayoutManager(this)
         binding.tarjetaBusqueda.adapter = adapter
 
         //para mostrar la lista entera dee recetas:
         adapter.addDataCards(listaCompletaDeRecetas)
 
-        // 3. Configurar el listener del SearchView
         setupSearchView()
     }
 
-    /* Configura el listener para la barra de búsqueda (SearchView).
-    */
+    //configura el listener para la barra de bsuqueda
+
     private fun setupSearchView() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
@@ -65,7 +64,7 @@ class PantallaBusqueda : AppCompatActivity() {
                 return true
             }
 
-            // Se llama CADA VEZ que el usuario escribe o borra una letra
+            // Se llama cada vez que el usuario va escribiendo
             override fun onQueryTextChange(newText: String?): Boolean {
                 filterRecipes(newText)
                 return true
@@ -73,29 +72,26 @@ class PantallaBusqueda : AppCompatActivity() {
         })
     }
 
-    /* Filtra la lista de recetas basado en el texto de búsqueda.
-    */
+    // filtra la lista de recetas basado en el texto de busqueda.
+
     private fun filterRecipes(query: String?) {
         val listaFiltrada: List<Receta>
 
         if (query.isNullOrBlank()) {
-            // --- ESTE ES EL CAMBIO ---
-            // Si la barra de búsqueda está vacía,
-            // la lista filtrada es la lista COMPLETA.
+            //si nuestra lista esta vacia, muestra todas las recetas
             listaFiltrada = listaCompletaDeRecetas
-            // --- FIN DEL CAMBIO ---
 
             binding.tvNoResults.visibility = View.GONE
             binding.tarjetaBusqueda.visibility = View.VISIBLE
 
         } else {
-            // Si hay texto, filtra como antes
+            // si hay texto, filtra como antes
             val queryLower = query.lowercase()
             listaFiltrada = listaCompletaDeRecetas.filter { receta ->
                 receta.titulo.lowercase().contains(queryLower)
             }
 
-            // Lógica para mostrar "No se encontraron resultados"
+            // logica para mostrar "No se encontraron resultados"
             if (listaFiltrada.isEmpty()) {
                 binding.tvNoResults.visibility = View.VISIBLE
                 binding.tarjetaBusqueda.visibility = View.GONE
@@ -104,7 +100,7 @@ class PantallaBusqueda : AppCompatActivity() {
                 binding.tarjetaBusqueda.visibility = View.VISIBLE
             }
         }
-        // Actualizamos el adaptador con los resultados
+        // actualizamos el adapter con los resultados
         adapter.addDataCards(listaFiltrada)
     }
 }

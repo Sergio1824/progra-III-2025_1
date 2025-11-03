@@ -65,10 +65,8 @@ class AdapterPantallaReceta :
             binding.root.setOnClickListener {
                 val intent = Intent(context, PantallaDetalleReceta::class.java)
 
-                // ▼▼▼ LÍNEA MODIFICADA ▼▼▼
-                // Enviamos el ID único (NumReceta) en lugar del título.
+                // Enviamos el ID
                 intent.putExtra("RECETA_ID_SELECCIONADA", data.NumReceta)
-                // ▲▲▲ LÍNEA MODIFICADA ▲▲▲
 
                 context?.startActivity(intent)
             }
@@ -80,7 +78,7 @@ class AdapterPantallaReceta :
     fun addDataCards(list: List<Receta>) {
         dataCards.clear()
         dataCards.addAll(list)
-        notifyDataSetChanged() // notifica al RecyclerView que los datos cambiaron
+        notifyDataSetChanged() // notifica al RecyclerView que los datos cambiaron(los actualiza en tiempo real basicamente)
     }
     }
 

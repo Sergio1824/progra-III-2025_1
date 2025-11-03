@@ -19,7 +19,7 @@ class PantallaEditarReceta : AppCompatActivity() {
     val context: Context = this
 
     private lateinit var binding: ActivityPantallaEditarRecetaBinding // Usa el nuevo binding
-    private var recetaParaEditar: Receta? = null // Esta variable guardará la receta que estamos editando
+    private var recetaParaEditar: Receta? = null // Esta variable guarda la receta que estamos editando
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,34 +34,32 @@ class PantallaEditarReceta : AppCompatActivity() {
             insets
         }
 
-        // Configura los spinners
+        // configura los spinners
         setupSpinners()
 
-        // --- Lógica de Edición ---
-        // Esta pantalla SÓLO edita, así que asumimos que SIEMPRE recibimos un ID
+        // recibimos el ID de PANTALLAdetallerecegta
         val recipeIdToEdit = intent.getStringExtra("RECIPE_ID_TO_EDIT")
 
         if (recipeIdToEdit == null) {
             // Si por algún error no llega el ID, mostramos un error y cerramos la pantalla
             Toast.makeText(this, "Error: No se encontró la receta", Toast.LENGTH_LONG).show()
             finish()
-            return // Detenemos la ejecución de onCreate
+            return
         }
 
-        // Buscamos la receta
+        // buscamos la receta en nuestro manger
         recetaParaEditar = RecipeManager.getRecipes(this).find { it.NumReceta == recipeIdToEdit }
 
-        // Si la encontramos, rellenamos el formulario
+        // si la encontramos, llenamos el formulario con los datos
         if (recetaParaEditar != null) {
             rellenarFormulario(recetaParaEditar!!)
         } else {
-            // Si el ID existe pero la receta fue borrada, mostramos error y cerramos
+            // si el id existe pero la receta fue borrada, solo motramos un mensajje de rror
             Toast.makeText(this, "Error: Receta no válida", Toast.LENGTH_LONG).show()
             finish()
             return
         }
 
-        // Asignamos el listener al botón de guardar
         binding.btnGuardar.setOnClickListener {
             guardarCambiosEditados()
         }
@@ -80,7 +78,6 @@ class PantallaEditarReceta : AppCompatActivity() {
         binding.spDificultad.adapter = dificultadAdapter
     }
 
-    // Esta función es idéntica a la que tenías
     private fun rellenarFormulario(receta: Receta) {
         binding.etNombre.setText(receta.titulo)
         binding.etTiempo.setText(receta.tiempoPreparacion)
@@ -102,10 +99,10 @@ class PantallaEditarReceta : AppCompatActivity() {
     }
 
 
-    // Esta es la función de "Guardar" PERO solo para editar
+    // esta es la funcion de guardar
     private fun guardarCambiosEditados() {
 
-        // Primero, validamos que la receta original exista
+        //aqui validamos que existe la receta selccionada
         if (recetaParaEditar == null) {
             Toast.makeText(this, "Error al guardar, receta no encontrada", Toast.LENGTH_SHORT).show()
             finish()
@@ -142,8 +139,8 @@ class PantallaEditarReceta : AppCompatActivity() {
             "https://st4.depositphotos.com/16122460/29909/i/450/depositphotos_299099010-stock-photo-dirty-plate-with-food-leftovers.jpg"
         }
 
-        // 🔹 Aquí solo actualizamos la receta existente
-        // Usamos .copy() sobre la receta original para mantener su ID y estado de favorito
+        // actualizamos la receta existente
+        // usamos .copy() sobre la receta original para mantener su ID y estado de favorito
         val recetaEditada = recetaParaEditar!!.copy(
             titulo = titulo,
             categoria = categoria,
@@ -152,11 +149,10 @@ class PantallaEditarReceta : AppCompatActivity() {
             tiempoPreparacion = tiempo,
             ingredientes = listaIngredientes,
             instrucciones = listaInstrucciones
-            // Nota: NumReceta y esFavorito se mantienen igual que la original
         )
 
         RecipeManager.updateRecipe(this, recetaEditada)
         Toast.makeText(this, "Cambios guardados para '${recetaEditada.titulo}'", Toast.LENGTH_SHORT).show()
-        finish() // Cerramos la pantalla de edición
+        finish() //para cerra la pantalla defin al
     }
 }

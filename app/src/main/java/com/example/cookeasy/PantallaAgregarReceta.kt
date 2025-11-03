@@ -20,7 +20,6 @@ class PantallaAgregarReceta : AppCompatActivity() {
 
     private lateinit var binding: ActivityPantallaAgregarRecetaBinding // Usa el binding original
 
-    // --- ¡YA NO NECESITAMOS LA VARIABLE recetaParaEditar! ---
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,11 +34,10 @@ class PantallaAgregarReceta : AppCompatActivity() {
             insets
         }
 
-        // Configura los spinners
+        // configuracion de  los spinners
         setupSpinners()
 
-        // --- ¡YA NO NECESITAMOS LA LÓGICA DE EDICIÓN AQUÍ! ---
-        // La pantalla ahora siempre es para "Nueva Receta"
+
         binding.tvTitulo.text = "Nueva Receta"
         binding.btnGuardar.text = "Guardar Receta ✅"
 
@@ -61,7 +59,6 @@ class PantallaAgregarReceta : AppCompatActivity() {
         binding.spDificultad.adapter = dificultadAdapter
     }
 
-    // --- ¡YA NO NECESITAMOS rellenarFormulario()! ---
 
 
     private fun guardarNuevaReceta() {
@@ -96,9 +93,8 @@ class PantallaAgregarReceta : AppCompatActivity() {
             "https://st4.depositphotos.com/16122460/29909/i/450/depositphotos_299099010-stock-photo-dirty-plate-with-food-leftovers.jpg"
         }
 
-        // --- ¡YA NO NECESITAMOS EL IF PARA EDITAR! ---
 
-        // 🔹 Siempre es una receta nueva
+        // una receta nueva
         val nuevoId = System.currentTimeMillis().toString()
 
         val nuevaReceta = Receta(

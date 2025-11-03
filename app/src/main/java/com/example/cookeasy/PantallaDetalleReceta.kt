@@ -18,7 +18,6 @@ import com.example.cookeasy.managers.RecipeManager
 class PantallaDetalleReceta : AppCompatActivity() {
 
     private lateinit var binding: ActivityPantallaDetalleRecetaBinding
-    // Es mejor declarar el 'context' aquí para que los listeners lo usen
     private val context: Context = this
 
     @SuppressLint("SetTextI18n")
@@ -34,32 +33,28 @@ class PantallaDetalleReceta : AppCompatActivity() {
             insets
         }
 
-        // --- ▼▼▼ INICIO DE LA LÓGICA IMPORTANTE ▼▼▼ ---
 
-        // 1. Obtenemos el ID que nos envió el adaptador.
-        // Todas las variables se declaran LOCALES (dentro de onCreate).
+        // obtenemos el id que nos envio el adapter
         val recetaId = intent.getStringExtra("RECETA_ID_SELECCIONADA")
 
-        // 2. Verificamos si el ID llegó bien.
+        // verificamos el id
         if (recetaId == null) {
             Toast.makeText(this, "Error: No se recibió ID de la receta", Toast.LENGTH_LONG).show()
             finish() // Cierra la pantalla si no hay ID
             return   // Detiene la ejecución de onCreate
         }
 
-        // 3. Buscamos la receta en el Manager USANDO ESE ID.
-        // Esta es la ÚNICA fuente de datos.
+        //buscamos la recetq en el manager usando el ID
         val receta = RecipeManager.getRecipes(this).find { it.NumReceta == recetaId }
 
-        // 4. Verificamos si la receta se encontró.
+        // verificamos si la receta existe, si la encontrameos
         if (receta == null) {
             Toast.makeText(this, "Error: Receta no encontrada (ID: $recetaId)", Toast.LENGTH_LONG).show()
-            finish() // Cierra si el ID no coincide con nada
-            return   // Detiene la ejecución
+            finish()
+            return
         }
 
-        // 5. Si todo está bien, 'receta' es la correcta. Rellenamos los datos.
-        // NO usamos 'receta?.titulo' porque ya comprobamos que 'receta' no es null.
+        //  si toodo esta bien, llenamos los datos con su titulo, y sus detalles
         binding.recipeTitle.text = receta.titulo
         binding.recipeTime.text = "${receta.dificultad} - ${receta.tiempoPreparacion}"
 
@@ -73,24 +68,24 @@ class PantallaDetalleReceta : AppCompatActivity() {
             .load(receta.imagenReceta)
             .into(binding.recipeImage)
 
-        // --- Lógica de los botones ---
+        // botones del detalle receta
 
         binding.btnBack.setOnClickListener {
             finish()
         }
 
-        // Función interna para actualizar el botón de Favorito
+        // funcion interna para actualizar el botón de Favorito
         fun updateButtonState() {
             val esFav = FavoritesManager.isFavorite(context, receta.NumReceta)
             binding.btnFav.text = if (esFav) "Ya es Favorito" else "Favorito"
         }
 
-        // Carga el estado inicial del botón
+        // carga el estado inicial del botón
         updateButtonState()
 
         binding.btnFav.setOnClickListener {
             FavoritesManager.toggleFavorite(context, receta.NumReceta)
-            updateButtonState() // Actualiza el texto al hacer click
+            updateButtonState() // actualiza el texto al hacer click
         }
 
         binding.btnDelete.setOnClickListener {
@@ -100,12 +95,11 @@ class PantallaDetalleReceta : AppCompatActivity() {
         }
 
         binding.btnEdit.setOnClickListener {
-            // Se dirige a PantallaEditarReceta (¡Correcto!)
+            // Se dirige a PantallaEditarReceta)
             val intent = Intent(context, PantallaEditarReceta::class.java)
             intent.putExtra("RECIPE_ID_TO_EDIT", receta.NumReceta)
             startActivity(intent)
         }
 
-        // --- ▲▲▲ FIN DE LA LÓGICA IMPORTANTE ▲▲▲ ---
     }
 }
