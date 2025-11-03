@@ -76,8 +76,8 @@ class AdapterPantallaReceta :
     fun addDataCards(list: List<Receta>) {
         dataCards.clear()
         dataCards.addAll(list)
+        notifyDataSetChanged() // notifica al RecyclerView que los datos cambiaron
     }
-
     }
 
 
