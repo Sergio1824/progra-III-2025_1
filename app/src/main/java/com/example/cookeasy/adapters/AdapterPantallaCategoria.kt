@@ -13,16 +13,12 @@ import com.example.cookeasy.managers.RecipeManager
 import com.example.cookeasy.singleton.RecetasData
 
 
+//los adapters con para conectar, en este caso la lista de Categorias con el recyclerView de vistas_categorias
 class AdapterPantallaCategoria :
     RecyclerView.Adapter<AdapterPantallaCategoria.EjemploCardViewHolder>() {
 
     private val dataCards = mutableListOf<Categoria>()
     private var context: Context? = null
-
-    private var onItemClick: ((Categoria) -> Unit)? = null
-
-    // méto_do público para configurar el clic desde fuera
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EjemploCardViewHolder {
@@ -51,13 +47,21 @@ class AdapterPantallaCategoria :
         fun binding(data: Categoria) {
       //      binding.textAdapterEjemplo.text = data
 
+
+            // esto llama al Manager para contar cuantas recetas estan en la ultima lista guardada
+            // que pertenecen a la categoria definida,.
             val cantidadRecetas1 = RecipeManager.getRecipes(context!!).count {
                 it.categoria == data.nombre
             }//usamos el recipeManager(sharedPreferences)
 
+
+            //mostrar el texto para cada categoria, su nombre y su cantidad de recetas que hay en cada categorai
+
             binding.nombreCategoria.text = data.nombre
             binding.contadorRecetas.text = "({$cantidadRecetas1} RECETAS)"
 
+
+            //para cargar las imagenes de cada categoria  (glide)
             context?.let {
                 Glide.with(it) // Carga en el contexto
                     .load(data.imagenCategoria) //esta es la url de la clas

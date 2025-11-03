@@ -13,6 +13,8 @@
     import com.example.cookeasy.databinding.ActivityPantallaCategoriasBinding
     import com.example.cookeasy.managers.RecipeManager
 
+
+    // Es la pantalla que te muestras los tipos de recetas, en nuestro caso, las predeterminadas(5)
     class PantallaCategorias : AppCompatActivity() {
 
         val context: Context = this

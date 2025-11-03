@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Cook Easy</string>
+    <string name="app_lema">Tu recetario de confianza</string>
+    <string name="app_ver_categorias">Ver Categorias</string>
+    <string name="app_favoritos">Favoritos ❤</string>
+    <string name="app_agregar_receta">Agregar Receta</string>
+    <string name="app_cerrar_sesion">Cerrar Sesion</string>
+    <string name="app_log_in">LOG IN</string>
+    <string name="app_correo">Correo electrónico</string>
+    <string name="app_contra">Contraseña</string>
+    <string name="app_iniciar_sesion">Iniciar Sesión</string>
+    <string name="app_crear_cuenta">Crear Cuenta</string>
+    <string name="app_buscar_receta">BUSCAR RECETA</string>
+    <string name="app_categorias">CATEGORIAS</string>
+    <string name="app_detalle_receta">Detalle de Receta</string>
+    <string name="app_editar">Editar</string>
+    <string name="app_volver">Volver</string>
+    <string name="app_elimnar">Eliminar</string>
+    <string name="app_nueva_receta">NUEVA RECETA</string>
+    <string name="app_guardar_receta">Guardar Receta ✅</string>
+
+
+
+
 </resources>

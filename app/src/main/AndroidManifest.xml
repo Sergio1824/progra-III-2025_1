@@ -15,14 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CookEasy">
         <activity
-            android:name=".pantallaFavoritos"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".PantallaAgregarReceta"
+            android:exported="false" />
+        <activity
+            android:name=".PantallaDetalleReceta"
+            android:exported="false" />
         <activity
             android:name=".PantallaRecetas"
             android:exported="false" />

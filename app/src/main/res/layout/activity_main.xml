@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:background="@color/blue"
         android:gravity="center"
-        android:text="LOG IN"
+        android:text="@string/app_log_in"
         android:textColor="@color/white"
         android:textSize="28sp"
         android:layout_marginTop="5dp"
@@ -36,14 +36,14 @@
             android:id="@+id/edit_correo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Correo electrónico"
+            android:hint="@string/app_correo"
             android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/edit_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Contraseña"
+            android:hint="@string/app_contra"
             android:inputType="textPassword" />
 
         <Button
@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/brown"
-            android:text="Iniciar Sesión"
+            android:text="@string/app_iniciar_sesion"
             android:textSize="20sp"/>
 
         <Button
@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/brown"
-            android:text="Crear Cuenta"
+            android:text="@string/app_crear_cuenta"
             android:textSize="20sp"/>
         
     <TextView

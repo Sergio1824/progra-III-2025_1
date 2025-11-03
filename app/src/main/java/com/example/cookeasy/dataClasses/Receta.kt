@@ -2,7 +2,8 @@ package com.example.cookeasy.dataClasses
 
 import kotlinx.serialization.Serializable
 
-@Serializable
+//es la estructura de las recetas, sus atributos
+@Serializable //lo convierte a json
 data class Receta(
     val NumReceta: String,
     val titulo: String,

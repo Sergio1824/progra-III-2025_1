@@ -12,6 +12,9 @@ import com.example.cookeasy.databinding.ActivityPantallaRecetasBinding
 import com.example.cookeasy.managers.RecipeManager
 import com.example.cookeasy.singleton.RecetasData
 
+
+
+//esta es la pantalla que nos muestra todas las recetas que tengamos, dentro de la categoria seleccionada
 class PantallaRecetas : AppCompatActivity() {
 
     val context: Context = this
@@ -34,6 +37,7 @@ class PantallaRecetas : AppCompatActivity() {
             insets
         }
 
+        //obtiene la categoriaseleccionada que AdapterPantallaCategorias nos paso a traves del intent
         val categoriaSeleccionada = intent.getStringExtra("categoriaSeleccionada")
         binding.titleRecipe.text = categoriaSeleccionada ?: "RECETAS"
 
@@ -43,10 +47,11 @@ class PantallaRecetas : AppCompatActivity() {
      //   }
 
 
-        val allRecipes = RecipeManager.getRecipes(context)
-        val recetasFiltradas = allRecipes.filter {
+        val allRecipes = RecipeManager.getRecipes(context)  //llama al manager para obtener todas las recetas
+        val recetasFiltradas = allRecipes.filter {  //crea una lista que contiene solo las recetas de la
+            //categoria seleccionada
             it.categoria.equals(categoriaSeleccionada, ignoreCase = true)
-        }   //
+        }
 
 
         adapter.addDataCards(recetasFiltradas)

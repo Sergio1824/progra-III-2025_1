@@ -7,11 +7,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.cookeasy.PantallaDetalleReceta
-import com.example.cookeasy.activities.PantallaFavoritos
+import com.example.cookeasy.PantallaRecetas
 import com.example.cookeasy.dataClasses.Receta
 import com.example.cookeasy.databinding.VistasRecetasBinding
+import kotlin.collections.addAll
+import kotlin.text.clear
 
-class AdapterPantallaReceta(recetasFavoritas: List<Receta>, favoritos: PantallaFavoritos) :
+
+
+//los adapters con para conectar, en este caso la lista de Recetas con el recyclerView de vistas_recetas
+class AdapterPantallaReceta :
     RecyclerView.Adapter<AdapterPantallaReceta.EjemploCardViewHolder>() {
 
     private val dataCards = mutableListOf<Receta>()
@@ -41,8 +46,15 @@ class AdapterPantallaReceta(recetasFavoritas: List<Receta>, favoritos: PantallaF
         fun binding(data: Receta) {
             //      binding.textAdapterEjemplo.text = data
 
+
+
+            //mostrar el texto para cada receta, su nombre y su informacion
             binding.nombreReceta.text = data.titulo
             binding.infoReceta.text = "(${data.dificultad} - ${data.tiempoPreparacion})"
+
+
+
+            //para cargar las imagenes de cada receta  (glide)
 
             context?.let {
                 Glide.with(it) // Carga en el contexto
