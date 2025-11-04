@@ -48,6 +48,6 @@ Desde aquí puedes:
 
 ---
 
-### 6. ❤️ **Favoritos**
+### 6.  **Favoritos**
 - Aquí están **todas las recetas que guardaste como favoritos**.  
 - Puedes ver los **detalles de cada receta** o **quitarlas de tus favoritos** cuando quieras.
