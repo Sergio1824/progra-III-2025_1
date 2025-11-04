@@ -18,6 +18,11 @@
     <string name="app_elimnar">Eliminar</string>
     <string name="app_nueva_receta">NUEVA RECETA</string>
     <string name="app_guardar_receta">Guardar Receta ✅</string>
+    <string name="app_null_recetas_favoritas">Aún no tienes recetas favoritas.</string>
+    <string name="app_no_recetas">No se encontraron recetas</string>
+
+
+
 
 
 </resources>
