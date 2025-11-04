@@ -8,7 +8,6 @@
     android:background="@drawable/backgroun_light_cream"
     tools:context=".PantallaCategorias">
 
-    <!-- Fila de Búsqueda -->
     <TextView
         android:id="@+id/title_busqueda"
         android:layout_width="wrap_content"
@@ -17,7 +16,7 @@
         android:layout_marginTop="26dp"
         android:text="@string/app_buscar_receta"
         android:textColor="@color/light_brown"
-        android:textSize="34sp"
+        android:textSize="28sp"
         android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,9 +31,8 @@
         android:src="@drawable/lupa"
         app:layout_constraintBottom_toBottomOf="@id/title_busqueda"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" /> <!-- Centrado verticalmente con el título -->
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Título de Categorías -->
     <TextView
         android:id="@+id/title_category"
         android:layout_width="wrap_content"
@@ -43,12 +41,11 @@
         android:layout_marginTop="16dp"
         android:text="@string/app_categorias"
         android:textColor="@color/light_brown"
-        android:textSize="54sp"
+        android:textSize="40sp"
         android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_busqueda" /> <!-- Debajo del elemento más alto de la fila anterior (el botón) -->
+        app:layout_constraintTop_toBottomOf="@id/button_busqueda" />
 
-    <!-- Lista de Categorías -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tarjeta_categorias"
         android:layout_width="0dp"
